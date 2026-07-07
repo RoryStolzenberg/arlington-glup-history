@@ -90,6 +90,18 @@ viewer, but no Mapbox/Observable dependency).
   vs 2024 for every year (make_qa(name, "2024-front")) to catch chain drift.
 - report.tsv: name, anchor(method), points, rms_px.
 
+## PUBLISHED (2026-07-06)
+- Live: https://rorystolzenberg.github.io/arlington-glup-history/
+- Repo: github.com/RoryStolzenberg/arlington-glup-history (Pages from /docs
+  on main; gh account must be RoryStolzenberg — `gh auth switch`).
+- web/ renamed to docs/. Tiles = per-year .pmtiles archives (224 MB total)
+  in docs/tiles/; XYZ dirs stay local-only (gitignored) as pmtiles input.
+- Pipeline additions: pngquant pass (999→360 MB XYZ), scripts/pmtiles_build.py
+  (mb-util + go-pmtiles; PMTILES env for binary path). Viewer uses pmtiles
+  protocol; TILES_BASE global allows moving archives to R2 later.
+- GitHub Pages DOES serve range requests (verified 206 on live pmtiles).
+- Local preview: `npx serve docs` (python http.server lacks Range support).
+
 ## FINAL STATE (2026-07-06, after v2 rebuild)
 - ALL 21 editions verified vs TIGER: global offset ≤30 ft, resp 0.043–0.194
   (verify.py table). Old scans (1961–1983) ≈15–30 ft; modern ≤7 ft.
