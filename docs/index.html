@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Historical GLUP Maps — Arlington County, VA</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css" rel="stylesheet">
+<link href="style.css" rel="stylesheet">
+</head>
+<body>
+<div id="maps">
+  <div id="wrapA" class="map-wrap"><div id="mapA" class="map"></div></div>
+  <div id="wrapB" class="map-wrap hidden"><div id="mapB" class="map"></div></div>
+  <div id="divider" class="hidden"><div id="divider-handle">⇔</div></div>
+</div>
+
+<header id="titlebar">
+  <h1>Arlington GLUP <span id="title-year"></span></h1>
+  <p>General Land Use Plan, 1961–2024 ·
+    <a id="source-link" href="#" target="_blank" rel="noopener">source sheet</a> ·
+    <a href="https://www.arlingtonva.us/Government/Projects/Plans-Studies/General-Land-Use-Plan/Maps"
+       target="_blank" rel="noopener">county archive</a></p>
+</header>
+
+<div id="controls">
+  <label>overlay
+    <input id="opacity" type="range" min="0" max="100" value="100">
+  </label>
+  <button id="compare-btn" title="Compare two years side by side">compare</button>
+</div>
+
+<div id="compare-years" class="hidden">
+  <select id="yearA"></select>
+  <span>vs</span>
+  <select id="yearB"></select>
+</div>
+
+<nav id="timeline"></nav>
+
+<script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
+<script src="https://unpkg.com/pmtiles@3.2.1/dist/pmtiles.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

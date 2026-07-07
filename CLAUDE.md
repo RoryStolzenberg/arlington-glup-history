@@ -1,0 +1,16 @@
+# Arlington GLUP Historical Map Viewer
+
+Automatic georeferencing of Arlington County's General Land Use Plan map
+editions (1961–2024) + a static MapLibre web viewer to browse/compare them.
+
+## Memory files
+- `memory/2026-07-06-pipeline-notes.md` — pipeline design, source facts,
+  false-match lessons (READ FIRST in new sessions)
+
+## Layout
+- `sources/` — original PDFs/JPGs (gitignored) + manifest.tsv
+- `scripts/` — download.sh, extract.py, georef.py, corr_match.py, tiles.py
+- `work/` — rgb/ (plain renders), georef/ (EPSG:2283 GeoTIFFs), qa/ (blends)
+- `web/` — static viewer (index.html/app.js/style.css, tiles/ gitignored)
+- `experiments/` — one-off matching experiments
+- Python: `.venv/bin/python` (opencv); GDAL via CLI tools

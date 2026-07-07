@@ -1,0 +1,5 @@
+.venv/
+work/
+sources/*.pdf
+sources/*.jpg
+docs/tiles/*/
