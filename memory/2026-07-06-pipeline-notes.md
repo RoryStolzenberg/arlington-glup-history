@@ -145,11 +145,27 @@ viewer, but no Mapbox/Observable dependency).
     mostly small painted lots under labels. totals<4 alone catches truly
     white parcels. Do NOT raise the floor to 12: it moth-eats rows of
     tiny commercial lots under big glyphs.
+  * Round 3 (user caught label-red parcels + south speckle): ink-on-red is
+    COLOR-IDENTICAL to the com-office crosshatch — no exemplar geometry
+    fixes it. Two structural mechanisms instead:
+    - "regions" per class: com-office only exists where crosshatch is
+      legibly drawn (Court House [3130,2230,3420,2470] + Pentagon City
+      [4250,3330,4560,3560] — VERIFIED both on the original; Nauck has
+      none). Class zeroed outside its boxes.
+    - Morphological OPENING (r=2 disc) on every class before the parcel
+      vote — the big-swathes prior as code; kills all glyph-sized blobs
+      county-wide (this ended the per-location negative whack-a-mole).
+      "textured" classes (hatch patterns fragment by nature) are exempt
+      and must be region-bounded instead.
+  * Palette gotcha: res-lowmed and com-neighborhood render nearly the same
+    orange in the QA png — verify by class counts, not by eye (Nauck's
+    tan two-family fabric was correct all along).
   * KNOWN RESIDUAL (1961): diagonal scan wash band turns white/street
     areas into L≈80 gray → false gov-community patches along the river,
     NE of cemetery, Court House civic blocks (~tens of acres). Real fix =
     flat-field illumination correction before classification. Court House
-    SW parcels partly read brown (washed crosshatch).
+    SW parcels partly read brown (washed crosshatch). Greenway (25 ac) is
+    nearly all absorbed into semi-public — report the open-space family.
 - VALIDATION vs official od_GLUP_Sectors (tiles county incl. ROW, 16,692
   ac): my 2024 per-class ≈ 0.8× official across the board = the excluded
   street ROW share; semi-public 0.98× (few internal streets) confirms.

@@ -57,6 +57,7 @@ STREET_DILATE = 3          # px dilation of the TIGER street mask (8 ft/px)
 INK_HALO = 3               # px dilation of black ink excluded (blur ring)
 SOLID_WIN = 15             # px window for the solid-fill (street-ness) test
 SOLID_MAX_STREET = 0.20    # reject raw px where paper+ink fraction exceeds
+OPEN_RADIUS = 2            # px: designations are big swathes; kill smaller
 LARGE_PARCEL_PX = 4000     # ~6 acres: big tracts may straddle designations
 LARGE_PARCEL_SHARE = 0.6   # ...so only snap them when one class dominates
 
@@ -177,6 +178,31 @@ def classify_year(year, parcel_ids, parcel_rpc, county_mask, tiger_streets):
     cls = cls.reshape(h, w)
     cls[county_mask == 0] = 0        # outside Arlington: water, DC, margins
     street_frac = street_frac.reshape(h, w)
+
+    # some classes are only legible in known places (the com-office red
+    # crosshatch reads identically to label ink over red everywhere else)
+    for code, boxes in cfg.get("regions", {}).items():
+        allowed = np.zeros((h, w), bool)
+        for x0, y0, x1, y1 in boxes:
+            allowed[y0:y1, x0:x1] = True
+        cls[(cls == code_idx[code] + 1) & ~allowed] = 0
+
+    # GLUP designations are big contiguous swathes: anything that survives
+    # the ink halo but is only a few pixels wide (label glyphs, symbols,
+    # street casings) is print noise, not a designation. Classes drawn as
+    # a hatch pattern ("textured") fragment by nature and are exempt —
+    # they should be geographically bounded via "regions" instead.
+    kern = cv2.getStructuringElement(
+        cv2.MORPH_ELLIPSE, (2 * OPEN_RADIUS + 1, 2 * OPEN_RADIUS + 1))
+    textured = {code_idx[c] + 1 for c in cfg.get("textured", [])}
+    for c in range(1, len(swatches) + 1):
+        if c in textured:
+            continue
+        m = (cls == c).astype(np.uint8)
+        if not m.any():
+            continue
+        opened = cv2.morphologyEx(m, cv2.MORPH_OPEN, kern)
+        cls[(m > 0) & (opened == 0)] = 0
 
     OUT.mkdir(parents=True, exist_ok=True)
     write_tif(OUT / f"{year}_raw.tif", cls)

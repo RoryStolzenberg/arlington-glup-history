@@ -40,6 +40,10 @@
     {"code": "apt-office",    "x": 3780, "y": 2000},
     {"code": "apt-office",    "x": 3750, "y": 2080}
   ],
+  "regions": {
+    "com-office": [[3130, 2230, 3420, 2470], [4250, 3330, 4560, 3560]]
+  },
+  "textured": ["com-office"],
   "negatives": [
     {"x": 1279, "y": 1613},
     {"x": 1382, "y": 1668},
