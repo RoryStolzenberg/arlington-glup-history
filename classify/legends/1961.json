@@ -1,0 +1,18 @@
+{
+  "comment": "Swatch centers in work/rgb/1961-front.tif sheet pixels (3500x5147 scan). Motel is the same red as General Business (distinguished only by an M symbol) and is merged into it. Office Buildings is a red crosshatch; the blurred color is distinct.",
+  "sample_radius": 12,
+  "classes": [
+    {"code": "res-low",        "name": "Low (single family, 0-8 u/ac)",     "x": 782,  "y": 3895},
+    {"code": "res-lowmed",     "name": "Low Medium (two family, 9-13)",     "x": 782,  "y": 3988},
+    {"code": "res-highmed",    "name": "High Medium (multi-family, 14-39)", "x": 782,  "y": 4068},
+    {"code": "public",         "name": "Public open space",                 "x": 782,  "y": 4241},
+    {"code": "semi-public",    "name": "Semi-public open space",            "x": 782,  "y": 4314},
+    {"code": "greenway",       "name": "Private greenway",                  "x": 782,  "y": 4380},
+    {"code": "com-neighborhood","name": "Neighborhood Shopping",            "x": 3420, "y": 3945},
+    {"code": "com-general",    "name": "General Business (incl. Motel)",    "x": 3420, "y": 4002},
+    {"code": "com-office",     "name": "Office Buildings",                  "x": 3420, "y": 4064},
+    {"code": "industrial",     "name": "Industrial",                        "x": 3420, "y": 4183},
+    {"code": "gov-community",  "name": "Government and Community Facilities","x": 3420, "y": 4270},
+    {"code": "apt-office",     "name": "Apartments & Offices",              "x": 3420, "y": 4343}
+  ]
+}
