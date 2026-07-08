@@ -162,10 +162,19 @@ viewer, but no Mapbox/Observable dependency).
     tan two-family fabric was correct all along).
   * KNOWN RESIDUAL (1961): diagonal scan wash band turns white/street
     areas into L≈80 gray → false gov-community patches along the river,
-    NE of cemetery, Court House civic blocks (~tens of acres). Real fix =
-    flat-field illumination correction before classification. Court House
+    NE of cemetery, Court House civic blocks (~tens of acres). Court House
     SW parcels partly read brown (washed crosshatch). Greenway (25 ac) is
     nearly all absorbed into semi-public — report the open-space family.
+  * Flat-field correction: TRIED AND SHELVED (2026-07-08). Two anchor
+    strategies (bright neutral pixels; TIGER street infill) both
+    overcorrect big gray fills — Ft Myer 79→87 / 79→91 L (map draws no
+    white infill on base roads, so anchors sample the fill) — while
+    undercorrecting deep wash (paper 78→84 not 96). Gray(83) vs paper(96)
+    margin is 13 L; wash spans ~18; failure direction erases ~1,500 ac of
+    real gov-gray to fix ~50 cosmetic ac. flat_field() stays in
+    classify.py behind per-edition "flat_field" flag (default OFF) with
+    the post-mortem in its docstring. ALWAYS probe Ft Myer + deep-wash
+    paper before enabling anywhere.
 - VALIDATION vs official od_GLUP_Sectors (tiles county incl. ROW, 16,692
   ac): my 2024 per-class ≈ 0.8× official across the board = the excluded
   street ROW share; semi-public 0.98× (few internal streets) confirms.

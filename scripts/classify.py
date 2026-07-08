@@ -54,6 +54,8 @@ MIN_PARCEL_SHARE = 0.4     # plurality must cover this share of classified px
 ACRES_PER_PX = (TR * TR) / 43560.0
 BLACK_CHROMA = 18.0        # ink is neutral; dark saturated fills are paint
 STREET_DILATE = 3          # px dilation of the TIGER street mask (8 ft/px)
+FF_CELL = 256              # px cell for the flat-field illumination grid
+FF_GAIN_MAX = 1.35         # never brighten more than this (wash is mild)
 INK_HALO = 3               # px dilation of black ink excluded (blur ring)
 SOLID_WIN = 15             # px window for the solid-fill (street-ness) test
 SOLID_MAX_STREET = 0.20    # reject raw px where paper+ink fraction exceeds
@@ -84,6 +86,49 @@ def sample_swatches(year, cfg):
     return out
 
 
+def flat_field(img, streets):
+    """Divide out uneven scan illumination (old photographed wall maps
+    have shadowed/washed bands where bare paper reads as gray — the same
+    gray as painted fills).
+
+    SHELVED, off by default ("flat_field" per-edition config flag).
+    Measured on 1961: both a bright-neutral-pixel anchor and this TIGER
+    street-infill anchor overcorrect large gray fills (Fort Myer 79->87
+    resp. 79->91: the map draws no white infill for the base's internal
+    roads, so the anchor samples the gray fill itself) while
+    undercorrecting the deep wash (paper 78->84, not ~96). True gray (83)
+    and paper (96) are 13 L apart, the wash spans ~18 — any estimator
+    error flips one, and erasing real gov-gray costs ~30x more acreage
+    than the wash's false-gray patches. If a worse scan forces this on:
+    fit a low-order polynomial only to trusted bright anchors and raise
+    the white cutoff for corrected editions.
+    """
+    lab = to_lab(img)
+    h, w = lab.shape[:2]
+    gh, gw = (h + FF_CELL - 1) // FF_CELL, (w + FF_CELL - 1) // FF_CELL
+    field = np.zeros((gh, gw), np.float32)
+    for gy in range(gh):
+        for gx in range(gw):
+            sl = np.s_[gy * FF_CELL:(gy + 1) * FF_CELL,
+                       gx * FF_CELL:(gx + 1) * FF_CELL]
+            m = streets[sl] > 0
+            if m.sum() > 200:
+                field[gy, gx] = np.percentile(lab[sl][..., 0][m], 95)
+    # cells without streets (river, margins): nearest measured neighbor
+    if (field == 0).any():
+        ys, xs = np.nonzero(field == 0)
+        gys, gxs = np.nonzero(field > 0)
+        for y, x in zip(ys, xs):
+            d = (gys - y) ** 2 + (gxs - x) ** 2
+            field[y, x] = field[gys[d.argmin()], gxs[d.argmin()]]
+    field = cv2.GaussianBlur(field, (0, 0), 1.0)
+    target = float(np.percentile(field, 90))
+    gain = np.clip(target / np.maximum(field, 1), 1.0, FF_GAIN_MAX)
+    gain = cv2.resize(gain, (w, h), interpolation=cv2.INTER_LINEAR)
+    return np.clip(img.astype(np.float32) * gain[..., None],
+                   0, 255).astype(np.uint8)
+
+
 def county_grid_rgb(year):
     with tempfile.TemporaryDirectory() as td:
         grid = Path(td) / "grid.tif"
@@ -105,6 +150,8 @@ def classify_year(year, parcel_ids, parcel_rpc, county_mask, tiger_streets):
 
     blur = cfg.get("blur", {"median": 5, "gauss": 2.0})
     img = county_grid_rgb(year)
+    if cfg.get("flat_field"):
+        img = flat_field(img, tiger_streets)
     lab0 = to_lab(img)               # unblurred: ink/paper keep their value
     if blur.get("median"):
         img = cv2.medianBlur(img, blur["median"])
