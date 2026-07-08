@@ -1,0 +1,115 @@
+{
+ "comment": "Swatch centers auto-probed from work/rgb/2018-front.tif (10800x10800 render). Digital-era sheet; layout shared within its era. white_chroma tight because oah-low is a near-white pale blue the default white cut would erase.",
+ "sample_radius": 28,
+ "white_chroma": 5,
+ "classes": [
+  {
+   "code": "res-low-1-10",
+   "name": "Residential Low (1-10 u/ac)",
+   "x": 370,
+   "y": 6697
+  },
+  {
+   "code": "res-low-11-15",
+   "name": "Residential Low (11-15 u/ac)",
+   "x": 370,
+   "y": 6847
+  },
+  {
+   "code": "res-lowmed",
+   "name": "Residential Low-Medium",
+   "x": 370,
+   "y": 7000
+  },
+  {
+   "code": "res-med",
+   "name": "Residential Medium",
+   "x": 370,
+   "y": 7147
+  },
+  {
+   "code": "res-highmed",
+   "name": "Residential High-Medium",
+   "x": 370,
+   "y": 7298
+  },
+  {
+   "code": "res-high",
+   "name": "Residential High",
+   "x": 370,
+   "y": 7450
+  },
+  {
+   "code": "svc-commercial",
+   "name": "Service Commercial",
+   "x": 370,
+   "y": 7817
+  },
+  {
+   "code": "com-general",
+   "name": "General Commercial",
+   "x": 370,
+   "y": 8045
+  },
+  {
+   "code": "svc-industry",
+   "name": "Service Industry",
+   "x": 370,
+   "y": 8255
+  },
+  {
+   "code": "public",
+   "name": "Public",
+   "x": 370,
+   "y": 8621
+  },
+  {
+   "code": "semi-public",
+   "name": "Semi-Public",
+   "x": 370,
+   "y": 8831
+  },
+  {
+   "code": "gov-community",
+   "name": "Government and Community Facilities",
+   "x": 370,
+   "y": 9053
+  },
+  {
+   "code": "oah-low",
+   "name": "Office-Apartment-Hotel Low",
+   "x": 370,
+   "y": 9478
+  },
+  {
+   "code": "oah-med",
+   "name": "Office-Apartment-Hotel Medium",
+   "x": 370,
+   "y": 9628
+  },
+  {
+   "code": "oah-high",
+   "name": "Office-Apartment-Hotel High",
+   "x": 370,
+   "y": 9778
+  },
+  {
+   "code": "mu-med",
+   "name": "Medium Density Mixed-Use",
+   "x": 370,
+   "y": 10145
+  },
+  {
+   "code": "mu-highmed",
+   "name": "High-Medium Residential Mixed-Use",
+   "x": 370,
+   "y": 10361
+  },
+  {
+   "code": "mu-coord",
+   "name": "Coordinated Mixed-Use Development",
+   "x": 370,
+   "y": 10570
+  }
+ ]
+}

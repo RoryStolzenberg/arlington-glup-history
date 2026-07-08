@@ -1,0 +1,109 @@
+{
+ "comment": "Swatch centers auto-probed from work/rgb/2019-front.tif (10800x10800 render). Digital-era sheet; layout shared within its era. white_chroma tight because oah-low is a near-white pale blue the default white cut would erase.",
+ "sample_radius": 28,
+ "white_chroma": 5,
+ "classes": [
+  {
+   "code": "res-low-1-10",
+   "name": "Residential Low (1-10 u/ac)",
+   "x": 315,
+   "y": 6906
+  },
+  {
+   "code": "res-low-11-15",
+   "name": "Residential Low (11-15 u/ac)",
+   "x": 315,
+   "y": 7051
+  },
+  {
+   "code": "res-lowmed",
+   "name": "Residential Low-Medium",
+   "x": 315,
+   "y": 7197
+  },
+  {
+   "code": "res-med",
+   "name": "Residential Medium",
+   "x": 315,
+   "y": 7342
+  },
+  {
+   "code": "res-highmed",
+   "name": "Residential High-Medium",
+   "x": 315,
+   "y": 7487
+  },
+  {
+   "code": "res-high",
+   "name": "Residential High",
+   "x": 315,
+   "y": 7633
+  },
+  {
+   "code": "svc-commercial",
+   "name": "Service Commercial",
+   "x": 315,
+   "y": 7960
+  },
+  {
+   "code": "svc-industry",
+   "name": "Service Industry",
+   "x": 315,
+   "y": 8174
+  },
+  {
+   "code": "public",
+   "name": "Public",
+   "x": 315,
+   "y": 8501
+  },
+  {
+   "code": "semi-public",
+   "name": "Semi-Public",
+   "x": 315,
+   "y": 8693
+  },
+  {
+   "code": "gov-community",
+   "name": "Government and Community Facilities",
+   "x": 315,
+   "y": 8914
+  },
+  {
+   "code": "oah-low",
+   "name": "Office-Apartment-Hotel Low",
+   "x": 315,
+   "y": 9293
+  },
+  {
+   "code": "oah-med",
+   "name": "Office-Apartment-Hotel Medium",
+   "x": 315,
+   "y": 9423
+  },
+  {
+   "code": "oah-high",
+   "name": "Office-Apartment-Hotel High",
+   "x": 315,
+   "y": 9552
+  },
+  {
+   "code": "mu-med",
+   "name": "Medium Density Mixed-Use",
+   "x": 315,
+   "y": 9872
+  },
+  {
+   "code": "mu-highmed",
+   "name": "High-Medium Residential Mixed-Use",
+   "x": 315,
+   "y": 10063
+  },
+  {
+   "code": "mu-coord",
+   "name": "Coordinated Mixed-Use Development",
+   "x": 315,
+   "y": 10227
+  }
+ ]
+}
