@@ -200,9 +200,16 @@ def classify_year(year, parcel_ids, parcel_rpc, county_mask, tiger_streets):
     # (2024 oah-low) force a tight white chroma bound — both per-edition
     black_l = cfg.get("black_l", BLACK_L)
     white_chroma = cfg.get("white_chroma", WHITE_CHROMA)
+    # "dark" classes are printed as near-black stipple (Residential High
+    # on the 1987-2004 sheets): color-identical to ink, so they are
+    # exempt from the black cut and halo — and MUST be region-bound or
+    # every label glyph in the county would classify as towers
+    dark_ok = np.zeros(cls.shape, bool)
+    for c in cfg.get("dark", []):
+        dark_ok |= cls == code_idx[c] + 1
     cls[bestd > MAX_LAB_DIST] = 0
     cls[(flat[:, 0] > WHITE_L) & (chroma < white_chroma)] = 0
-    cls[(flat[:, 0] < black_l) & (chroma < BLACK_CHROMA)] = 0
+    cls[(flat[:, 0] < black_l) & (chroma < BLACK_CHROMA) & ~dark_ok] = 0
 
     # ink masks come from the UNBLURRED image: the median filter eats thin
     # street casings entirely, leaving a colored smear with no black nearby
@@ -212,10 +219,13 @@ def classify_year(year, parcel_ids, parcel_rpc, county_mask, tiger_streets):
     black0 = (flat0[:, 0] < black_l) & (chroma0 < BLACK_CHROMA)
     # ink blur ring: pixels bordering black lines/text read as a darkened
     # smear of the underlying paint and match the darker classes
-    k = 2 * INK_HALO + 1
+    # halo radius is per-edition: 3 px suits the 1961-83 lithos' heavy
+    # casings, but the 1987+ base map draws every building footprint in
+    # fine black ink and a wide halo starves small lots of their vote
+    k = 2 * cfg.get("ink_halo", INK_HALO) + 1
     halo = cv2.dilate(black0.reshape(h, w).astype(np.uint8),
                       np.ones((k, k), np.uint8))
-    cls[halo.ravel() > 0] = 0
+    cls[(halo.ravel() > 0) & ~dark_ok] = 0
 
     # street-ness: fraction of bare-paper/ink pixels in a window. Gray fills
     # and street-network-on-paper have the same blurred color, so raw

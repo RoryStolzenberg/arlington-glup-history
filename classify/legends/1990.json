@@ -1,0 +1,172 @@
+{
+ "comment": "Swatch centers auto-probed from work/rgb/1990-front.tif. Offset-print scan era (1987 base map redesign): 18 classes, same set as 2013-2018. Residential High is a black stipple texture, exempt from opening and likely needing regions/map samples once QA'd. Median-only blur like other scans.",
+ "sample_radius": 14,
+ "blur": {
+  "median": 5,
+  "gauss": 0
+ },
+ "textured": [],
+ "classes": [
+  {
+   "code": "res-low-1-10",
+   "name": "Residential Low (1-10 u/ac)",
+   "x": 130,
+   "y": 3198
+  },
+  {
+   "code": "res-low-11-15",
+   "name": "Residential Low (11-15 u/ac)",
+   "x": 130,
+   "y": 3263
+  },
+  {
+   "code": "res-lowmed",
+   "name": "Residential Low-Medium (16-36 u/ac)",
+   "x": 130,
+   "y": 3329
+  },
+  {
+   "code": "res-med",
+   "name": "Residential Medium (37-72 u/ac)",
+   "x": 130,
+   "y": 3392
+  },
+  {
+   "code": "res-highmed",
+   "name": "Residential High-Medium (3.24 FAR)",
+   "x": 130,
+   "y": 3457
+  },
+  {
+   "code": "res-high",
+   "name": "Residential High (4.8 FAR)",
+   "x": 130,
+   "y": 3521
+  },
+  {
+   "code": "svc-commercial",
+   "name": "Service Commercial",
+   "x": 130,
+   "y": 3664
+  },
+  {
+   "code": "com-general",
+   "name": "General Commercial",
+   "x": 130,
+   "y": 3736
+  },
+  {
+   "code": "svc-industry",
+   "name": "Service Industry",
+   "x": 130,
+   "y": 3823
+  },
+  {
+   "code": "public",
+   "name": "Public",
+   "x": 130,
+   "y": 3994
+  },
+  {
+   "code": "semi-public",
+   "name": "Semi-Public",
+   "x": 130,
+   "y": 4090
+  },
+  {
+   "code": "gov-community",
+   "name": "Government and Community Facilities",
+   "x": 130,
+   "y": 4187
+  },
+  {
+   "code": "oah-low",
+   "name": "Office-Apartment-Hotel Low",
+   "x": 130,
+   "y": 4402
+  },
+  {
+   "code": "oah-med",
+   "name": "Office-Apartment-Hotel Medium",
+   "x": 130,
+   "y": 4474
+  },
+  {
+   "code": "oah-high",
+   "name": "Office-Apartment-Hotel High",
+   "x": 130,
+   "y": 4540
+  },
+  {
+   "code": "mu-med",
+   "name": "Medium Density Mixed-Use",
+   "x": 130,
+   "y": 4680
+  },
+  {
+   "code": "mu-highmed",
+   "name": "High-Medium Residential Mixed-Use",
+   "x": 130,
+   "y": 4745
+  },
+  {
+   "code": "mu-coord",
+   "name": "Coordinated Mixed-Use Development District",
+   "x": 130,
+   "y": 4811
+  }
+ ],
+ "dark": [
+  "res-high"
+ ],
+ "regions": {
+  "res-high": [
+   [
+    2450,
+    1850,
+    3800,
+    2450
+   ],
+   [
+    4350,
+    3400,
+    4650,
+    4050
+   ]
+  ]
+ },
+ "map_samples": [
+  {
+   "code": "res-high",
+   "x": 4450,
+   "y": 3551
+  },
+  {
+   "code": "public",
+   "x": 2350,
+   "y": 3700
+  },
+  {
+   "code": "gov-community",
+   "x": 3420,
+   "y": 2620
+  },
+  {
+   "code": "gov-community",
+   "x": 3500,
+   "y": 2800
+  },
+  {
+   "code": "res-low-1-10",
+   "x": 2500,
+   "y": 1500
+  },
+  {
+   "code": "res-low-1-10",
+   "x": 2200,
+   "y": 2900
+  }
+ ],
+ "white_chroma": 4,
+ "ink_halo": 2
+}
