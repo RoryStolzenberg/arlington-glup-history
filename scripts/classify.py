@@ -118,14 +118,18 @@ def classify_year(year, parcel_ids, parcel_rpc, county_mask, tiger_streets):
     ex_lab = [s[2] for s in swatches]
     ex_cls = list(range(len(swatches)))
     r = cfg.get("map_sample_radius", 5)
-    for ms in cfg.get("map_samples", []):
+    # negatives: colors that mimic a class but mean "no designation"
+    # (e.g. black text over yellow smears to the exact hue of the greens);
+    # they compete as exemplars of class 0
+    for ms in cfg.get("map_samples", []) + cfg.get("negatives", []):
         med = np.median(
             lab[ms["y"] - r:ms["y"] + r, ms["x"] - r:ms["x"] + r]
             .reshape(-1, 3), axis=0)
-        print(f"  +map {ms['code']:14s} ({ms['x']},{ms['y']}) "
+        code = ms.get("code")
+        print(f"  +map {code or 'NEGATIVE':14s} ({ms['x']},{ms['y']}) "
               f"Lab=({med[0]:5.1f},{med[1]:+5.1f},{med[2]:+5.1f})")
         ex_lab.append(med)
-        ex_cls.append(code_idx[ms["code"]])
+        ex_cls.append(code_idx[code] if code else -1)
     ex_lab = np.float32(ex_lab)
     ex_cls = np.int32(ex_cls)
 

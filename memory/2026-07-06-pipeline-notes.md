@@ -119,6 +119,16 @@ viewer, but no Mapbox/Observable dependency).
     corridor parcel: green upstream + industrial at Shirlington) →
     winner-take-all only when share≥0.6 for parcels >4000px; else raw.
   * MIN_CLASSIFIED_FRAC 0.15 (parcel mostly white = unpainted, not voted).
+  * "negatives" in config: user caught scattered lone "park" parcels in
+    solid yellow — black text over yellow smears to Lab≈(45,-3,+30), which
+    is within 15 of the greenway swatch (real 1961 greens have a ≤ -11).
+    Negative exemplars (class 0) sampled at smear points win those pixels;
+    true greens stay with their swatches (~18 away). GLUP sanity check:
+    designations are BIG CONTIGUOUS SWATHES — scattered single parcels of
+    a class amid another class = misclassification, diagnose don't ship.
+  * Caveat: the three 1961 green classes (public/semi-public/greenway) are
+    adjacent tints on the litho; per-class green acreage is soft, the
+    green-family total is the robust number.
 - VALIDATION vs official od_GLUP_Sectors (tiles county incl. ROW, 16,692
   ac): my 2024 per-class ≈ 0.8× official across the board = the excluded
   street ROW share; semi-public 0.98× (few internal streets) confirms.

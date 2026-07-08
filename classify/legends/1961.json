@@ -38,5 +38,9 @@
     {"code": "gov-community", "x": 3450, "y": 2850},
     {"code": "apt-office",    "x": 3780, "y": 2000},
     {"code": "apt-office",    "x": 3750, "y": 2080}
+  ],
+  "negatives": [
+    {"x": 1279, "y": 1613},
+    {"x": 1382, "y": 1668}
   ]
 }
