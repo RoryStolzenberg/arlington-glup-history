@@ -50,7 +50,6 @@ TR = 8                     # ft/px, must match work/ref/parcel_ids.tif
 MAX_LAB_DIST = 22.0        # nearest-exemplar cutoff (Lab units)
 WHITE_L, WHITE_CHROMA = 90.0, 9.0   # unpainted paper / streets
 BLACK_L = 30.0                       # ink lines & text
-MIN_PARCEL_SHARE = 0.4     # plurality must cover this share of classified px
 ACRES_PER_PX = (TR * TR) / 43560.0
 BLACK_CHROMA = 18.0        # ink is neutral; dark saturated fills are paint
 STREET_DILATE = 3          # px dilation of the TIGER street mask (8 ft/px)
@@ -60,8 +59,12 @@ INK_HALO = 3               # px dilation of black ink excluded (blur ring)
 SOLID_WIN = 15             # px window for the solid-fill (street-ness) test
 SOLID_MAX_STREET = 0.20    # reject raw px where paper+ink fraction exceeds
 OPEN_RADIUS = 2            # px: designations are big swathes; kill smaller
-LARGE_PARCEL_PX = 4000     # ~6 acres: big tracts may straddle designations
-LARGE_PARCEL_SHARE = 0.6   # ...so only snap them when one class dominates
+EDGE_ERODE = 2             # px of parcel edge excluded from the vote:
+                           # georef offset bleeds neighboring paint across
+                           # parcel lines (3 wipes 50 ft lots' interiors)
+MIXED_SHARE = 0.65         # below this no single color governs the parcel:
+                           # it straddles a designation boundary, keep the
+                           # painted pixels instead of a whole-parcel vote
 
 
 def to_lab(img_bgr):
@@ -254,13 +257,27 @@ def classify_year(year, parcel_ids, parcel_rpc, county_mask, tiger_streets):
     OUT.mkdir(parents=True, exist_ok=True)
     write_tif(OUT / f"{year}_raw.tif", cls)
 
-    # parcel plurality vote
+    # parcel plurality vote — parcel edges don't get one: the georef is
+    # only good to ~30 ft, so a strip of neighboring paint bleeds across
+    # every parcel line and would vote for the wrong parcel. Parcels too
+    # small/thin to keep an interior at all vote on their full pixels
+    # instead (a 50 ft lot is only ~6 px wide).
+    pf = parcel_ids.astype(np.float64)   # cv2 morphology can't take int64
+    ek = np.ones((2 * EDGE_ERODE + 1,) * 2, np.uint8)
+    interior = cv2.erode(pf, ek) == cv2.dilate(pf, ek)
     pid = parcel_ids.ravel()
-    c = cls.ravel().astype(np.int64)
     n_class = len(swatches) + 1
-    combo = pid.astype(np.int64) * n_class + c
-    counts = np.bincount(combo, minlength=(parcel_ids.max() + 1) * n_class)
-    counts = counts.reshape(-1, n_class)          # [parcel, class] px counts
+    n_parcel = parcel_ids.max() + 1
+
+    def vote_counts(class_flat):
+        combo = pid.astype(np.int64) * n_class + class_flat.astype(np.int64)
+        return np.bincount(combo, minlength=n_parcel * n_class) \
+                 .reshape(-1, n_class)
+
+    counts_int = vote_counts(np.where(interior.ravel(), cls.ravel(), 0))
+    counts_all = vote_counts(cls.ravel())
+    interior_px = np.bincount(pid[interior.ravel()], minlength=n_parcel)
+    counts = np.where((interior_px < 16)[:, None], counts_all, counts_int)
     classified = counts[:, 1:]                    # drop unclassified col
     totals = classified.sum(axis=1)
     parcel_px = np.bincount(pid, minlength=counts.shape[0])
@@ -280,26 +297,23 @@ def classify_year(year, parcel_ids, parcel_rpc, county_mask, tiger_streets):
     winner = np.where(in_top_fam, classified, 0).argmax(axis=1) + 1
     share = np.where(totals > 0,
                      famcounts.max(axis=1) / np.maximum(totals, 1), 0)
-    # the totals floor also catches genuinely unpainted (white) parcels:
-    # the white cut (plus negative exemplars) leaves them nothing to vote
-    # with, while even a tiny painted lot keeps a handful of valid pixels
-    winner[(share < MIN_PARCEL_SHARE) | (totals < 4)] = 0
-    # a big tract can legitimately straddle several designations (the 1961
-    # Four Mile Run corridor parcel is green upstream, industrial at
-    # Shirlington); winner-take-all would paint it one color end to end
-    large_mixed = (parcel_px > LARGE_PARCEL_PX) & (share < LARGE_PARCEL_SHARE)
-    winner[large_mixed] = 0
+    # no vote when no color governs the parcel: it straddles a designation
+    # boundary (a tract green upstream and industrial at Shirlington, an
+    # L-shaped lot painted only on one leg) or has nothing to vote with
+    # (genuinely unpainted). Those fall through to their painted pixels.
+    winner[(share < MIXED_SHARE) | (totals < 4)] = 0
+    winner[0] = 0
 
-    # outside parcels (ROW, federal land, water) keep raw pixels, but not
-    # on streets: road ROW carries no designation, and the drawn street
-    # (casings + infill) smears into colors that mimic the darker classes.
-    # TIGER centerlines say where the streets are; also require a locally
-    # solid fill for whatever remains.
+    # wherever no parcel vote governs — ROW, federal land, water, mixed
+    # parcels — keep raw pixels, but not on streets: road ROW carries no
+    # designation, and the drawn street (casings + infill) smears into
+    # colors that mimic the darker classes. TIGER centerlines say where
+    # the streets are; also require a locally solid fill for the rest.
     parcel_cls = winner.astype(np.uint8)[parcel_ids]
     raw_keep = cls.copy()
     raw_keep[street_frac > SOLID_MAX_STREET] = 0
     raw_keep[tiger_streets > 0] = 0
-    keep_raw = (parcel_ids == 0) | large_mixed[parcel_ids]
+    keep_raw = parcel_cls == 0
     parcel_cls[keep_raw] = raw_keep[keep_raw]
     write_tif(OUT / f"{year}_parcel.tif", parcel_cls)
 

@@ -145,6 +145,19 @@ viewer, but no Mapbox/Observable dependency).
     mostly small painted lots under labels. totals<4 alone catches truly
     white parcels. Do NOT raise the floor to 12: it moth-eats rows of
     tiny commercial lots under big glyphs.
+  * Round 4 (user: strip "hat" + reverse-L): whole-parcel votes fabricate
+    shapes when 1961 paint doesn't align with 2026 parcel polygons.
+    Fixes: (a) EDGE_ERODE=2 px — parcel-edge pixels don't vote (georef
+    bleed voted a strip's red onto the parcel behind it); 3 px wipes the
+    interior of 50 ft lots (res-low lost 1,000 ac) — parcels whose
+    interior is <16 px vote on full pixels instead; (b) MIXED_SHARE=0.65
+    for ALL parcels (replaces the large-parcel-only rule) and every
+    unresolved parcel falls through to raw painted pixels instead of
+    white. Acreage is now pixel-true for straddling parcels (res-low
+    5,743, ~240 ac below whole-parcel voting — intended).
+  * Paint-vs-parcel floor: when a painted strip covers ~70% of a parcel
+    the full parcel takes the color (share 0.65 gate) — visible as small
+    nubs. Irreducible without abandoning parcel snapping.
   * Round 3 (user caught label-red parcels + south speckle): ink-on-red is
     COLOR-IDENTICAL to the com-office crosshatch — no exemplar geometry
     fixes it. Two structural mechanisms instead:
