@@ -57,7 +57,6 @@ STREET_DILATE = 3          # px dilation of the TIGER street mask (8 ft/px)
 INK_HALO = 3               # px dilation of black ink excluded (blur ring)
 SOLID_WIN = 15             # px window for the solid-fill (street-ness) test
 SOLID_MAX_STREET = 0.20    # reject raw px where paper+ink fraction exceeds
-MIN_CLASSIFIED_FRAC = 0.15  # parcel is unpainted if fewer px classify
 LARGE_PARCEL_PX = 4000     # ~6 acres: big tracts may straddle designations
 LARGE_PARCEL_SHARE = 0.6   # ...so only snap them when one class dominates
 
@@ -192,12 +191,26 @@ def classify_year(year, parcel_ids, parcel_rpc, county_mask, tiger_streets):
     classified = counts[:, 1:]                    # drop unclassified col
     totals = classified.sum(axis=1)
     parcel_px = np.bincount(pid, minlength=counts.shape[0])
-    winner = classified.argmax(axis=1) + 1
+
+    # vote by class FAMILY, then take the top class within the winning
+    # family: near-identical tints (the 1961 greens) otherwise split a
+    # parcel's vote three ways and lose to noise or fall under the share
+    # threshold ("family" in the legend config, default = own class)
+    fams = [c.get("family", c["code"]) for c in cfg["classes"]]
+    fam_ids = {f: i for i, f in enumerate(dict.fromkeys(fams))}
+    fam_of = np.array([fam_ids[f] for f in fams])
+    famcounts = np.zeros((counts.shape[0], len(fam_ids)), np.int64)
+    for ci in range(len(fams)):
+        famcounts[:, fam_of[ci]] += classified[:, ci]
+    top_fam = famcounts.argmax(axis=1)
+    in_top_fam = fam_of[None, :] == top_fam[:, None]
+    winner = np.where(in_top_fam, classified, 0).argmax(axis=1) + 1
     share = np.where(totals > 0,
-                     classified.max(axis=1) / np.maximum(totals, 1), 0)
-    cfrac = totals / np.maximum(parcel_px, 1)
-    winner[(share < MIN_PARCEL_SHARE) | (totals < 4) |
-           (cfrac < MIN_CLASSIFIED_FRAC)] = 0
+                     famcounts.max(axis=1) / np.maximum(totals, 1), 0)
+    # the totals floor also catches genuinely unpainted (white) parcels:
+    # the white cut (plus negative exemplars) leaves them nothing to vote
+    # with, while even a tiny painted lot keeps a handful of valid pixels
+    winner[(share < MIN_PARCEL_SHARE) | (totals < 4)] = 0
     # a big tract can legitimately straddle several designations (the 1961
     # Four Mile Run corridor parcel is green upstream, industrial at
     # Shirlington); winner-take-all would paint it one color end to end

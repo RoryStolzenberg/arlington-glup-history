@@ -7,12 +7,12 @@
     {"code": "res-low",        "name": "Low (single family, 0-8 u/ac)",     "x": 782,  "y": 3895},
     {"code": "res-lowmed",     "name": "Low Medium (two family, 9-13)",     "x": 782,  "y": 3988},
     {"code": "res-highmed",    "name": "High Medium (multi-family, 14-39)", "x": 782,  "y": 4068},
-    {"code": "public",         "name": "Public open space",                 "x": 782,  "y": 4241},
-    {"code": "semi-public",    "name": "Semi-public open space",            "x": 782,  "y": 4314},
-    {"code": "greenway",       "name": "Private greenway",                  "x": 782,  "y": 4380},
+    {"code": "public",         "name": "Public open space",                 "x": 782,  "y": 4241, "family": "open-space"},
+    {"code": "semi-public",    "name": "Semi-public open space",            "x": 782,  "y": 4314, "family": "open-space"},
+    {"code": "greenway",       "name": "Private greenway",                  "x": 782,  "y": 4380, "family": "open-space"},
     {"code": "com-neighborhood","name": "Neighborhood Shopping",            "x": 3420, "y": 3945},
-    {"code": "com-general",    "name": "General Business (incl. Motel)",    "x": 3420, "y": 4002},
-    {"code": "com-office",     "name": "Office Buildings",                  "x": 3420, "y": 4064},
+    {"code": "com-general",    "name": "General Business (incl. Motel)",    "x": 3420, "y": 4002, "family": "com-red"},
+    {"code": "com-office",     "name": "Office Buildings",                  "x": 3420, "y": 4064, "family": "com-red"},
     {"code": "industrial",     "name": "Industrial",                        "x": 3420, "y": 4183},
     {"code": "gov-community",  "name": "Government and Community Facilities","x": 3420, "y": 4270},
     {"code": "apt-office",     "name": "Apartments & Offices",              "x": 3420, "y": 4343}
@@ -33,6 +33,7 @@
     {"code": "com-general",   "x": 3700, "y": 1835},
     {"code": "com-office",    "x": 3240, "y": 2330},
     {"code": "com-office",    "x": 3250, "y": 2350},
+    {"code": "com-office",    "x": 3300, "y": 2310},
     {"code": "industrial",    "x": 4560, "y": 4300},
     {"code": "gov-community", "x": 3400, "y": 2600},
     {"code": "gov-community", "x": 3450, "y": 2850},
@@ -41,6 +42,9 @@
   ],
   "negatives": [
     {"x": 1279, "y": 1613},
-    {"x": 1382, "y": 1668}
+    {"x": 1382, "y": 1668},
+    {"x": 1355, "y": 1977},
+    {"x": 1635, "y": 2041},
+    {"x": 1581, "y": 1716}
   ]
 }

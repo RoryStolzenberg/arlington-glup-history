@@ -129,6 +129,27 @@ viewer, but no Mapbox/Observable dependency).
   * Caveat: the three 1961 green classes (public/semi-public/greenway) are
     adjacent tints on the litho; per-class green acreage is soft, the
     green-family total is the robust number.
+  * Round 2 of user-caught errors (all label-ink smear over paint):
+    ink-on-orange = brown (res-highmed), ink-on-red = dark red matching the
+    com-office crosshatch → more negatives; near-white street-corner px
+    (L 89-92, chroma 6-9) just under the white cut were tiny parcels' only
+    "classified" px → gray flecks → negative at that color.
+  * Family voting ("family" in config): near-identical tints split a
+    parcel's vote and lose to noise or the share gate (a park parcel went
+    UNASSIGNED at share 0.34 with greens split 3 ways). Vote share is
+    tested per family; winner = top class within winning family. 1961:
+    open-space {public, semi-public, greenway}, com-red {com-general,
+    com-office}.
+  * Nearly every parcel IS painted (user prior): killed the
+    MIN_CLASSIFIED_FRAC "unpainted parcel" rule — it zeroed 1,092 parcels,
+    mostly small painted lots under labels. totals<4 alone catches truly
+    white parcels. Do NOT raise the floor to 12: it moth-eats rows of
+    tiny commercial lots under big glyphs.
+  * KNOWN RESIDUAL (1961): diagonal scan wash band turns white/street
+    areas into L≈80 gray → false gov-community patches along the river,
+    NE of cemetery, Court House civic blocks (~tens of acres). Real fix =
+    flat-field illumination correction before classification. Court House
+    SW parcels partly read brown (washed crosshatch).
 - VALIDATION vs official od_GLUP_Sectors (tiles county incl. ROW, 16,692
   ac): my 2024 per-class ≈ 0.8× official across the board = the excluded
   street ROW share; semi-public 0.98× (few internal streets) confirms.
