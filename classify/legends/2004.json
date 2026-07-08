@@ -1,0 +1,120 @@
+{
+ "comment": "Swatch centers read from work/rgb/2004-front.tif legend (bottom-left, 18 classes, same set as 1987-2018). Print scan: median-only blur, tight white_chroma for pale oah-low.",
+ "sample_radius": 25,
+ "blur": {
+  "median": 5,
+  "gauss": 0
+ },
+ "white_chroma": 5,
+ "ink_halo": 2,
+ "classes": [
+  {
+   "code": "res-low-1-10",
+   "name": "Residential Low (1-10 u/ac)",
+   "x": 340,
+   "y": 6225
+  },
+  {
+   "code": "res-low-11-15",
+   "name": "Residential Low (11-15 u/ac)",
+   "x": 340,
+   "y": 6400
+  },
+  {
+   "code": "res-lowmed",
+   "name": "Residential Low-Medium (16-36 u/ac)",
+   "x": 340,
+   "y": 6555
+  },
+  {
+   "code": "res-med",
+   "name": "Residential Medium (37-72 u/ac)",
+   "x": 340,
+   "y": 6700
+  },
+  {
+   "code": "res-highmed",
+   "name": "Residential High-Medium (3.24 FAR)",
+   "x": 340,
+   "y": 6855
+  },
+  {
+   "code": "res-high",
+   "name": "Residential High (4.8 FAR)",
+   "x": 340,
+   "y": 7015
+  },
+  {
+   "code": "svc-commercial",
+   "name": "Service Commercial",
+   "x": 340,
+   "y": 7250
+  },
+  {
+   "code": "com-general",
+   "name": "General Commercial",
+   "x": 340,
+   "y": 7450
+  },
+  {
+   "code": "svc-industry",
+   "name": "Service Industry",
+   "x": 340,
+   "y": 7605
+  },
+  {
+   "code": "public",
+   "name": "Public",
+   "x": 340,
+   "y": 7911
+  },
+  {
+   "code": "semi-public",
+   "name": "Semi-Public",
+   "x": 340,
+   "y": 8085
+  },
+  {
+   "code": "gov-community",
+   "name": "Government and Community Facilities",
+   "x": 340,
+   "y": 8280
+  },
+  {
+   "code": "oah-low",
+   "name": "Office-Apartment-Hotel Low",
+   "x": 340,
+   "y": 8605
+  },
+  {
+   "code": "oah-med",
+   "name": "Office-Apartment-Hotel Medium",
+   "x": 340,
+   "y": 8745
+  },
+  {
+   "code": "oah-high",
+   "name": "Office-Apartment-Hotel High",
+   "x": 340,
+   "y": 8895
+  },
+  {
+   "code": "mu-med",
+   "name": "Medium Density Mixed-Use",
+   "x": 340,
+   "y": 9151
+  },
+  {
+   "code": "mu-highmed",
+   "name": "High-Medium Residential Mixed-Use",
+   "x": 340,
+   "y": 9335
+  },
+  {
+   "code": "mu-coord",
+   "name": "Coordinated Mixed-Use Development District",
+   "x": 340,
+   "y": 9485
+  }
+ ]
+}
