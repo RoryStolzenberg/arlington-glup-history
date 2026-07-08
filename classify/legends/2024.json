@@ -1,6 +1,7 @@
 {
-  "comment": "Swatch centers in work/rgb/2024-front.tif sheet pixels (10800x10800, 300dpi render)",
+  "comment": "Swatch centers in work/rgb/2024-front.tif sheet pixels (10800x10800, 300dpi render). white_chroma is tight because oah-low is a near-white pale blue (chroma ~7) that the default white cut would erase; the PDF's true paper/roads are chroma ~0-3.",
   "sample_radius": 28,
+  "white_chroma": 5,
   "classes": [
     {"code": "res-low-1-10",   "name": "Residential Low (1-10 u/ac)",        "x": 315, "y": 6852},
     {"code": "res-low-11-15",  "name": "Residential Low (11-15 u/ac)",       "x": 315, "y": 7002},

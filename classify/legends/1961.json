@@ -1,6 +1,8 @@
 {
-  "comment": "Swatch centers in work/rgb/1961-front.tif sheet pixels (3500x5147 scan). Motel is the same red as General Business (distinguished only by an M symbol) and is merged into it. Office Buildings is a red crosshatch; the blurred color is distinct.",
+  "comment": "Swatch centers in work/rgb/1961-front.tif sheet pixels (3500x5147 scan). Motel is the same red as General Business (distinguished only by an M symbol) and is merged into it. Office Buildings is a red crosshatch; the blurred color is distinct. map_samples are in county-grid pixels (8 ft/px, county bbox) and cover the lithograph's spatial print drift: north-Arlington yellows are much paler than the legend swatch, map reds/magentas are darker, the crosshatch and blue washes only exist on the map. Median-only blur: a Gaussian smears white streets + black casings into the same gray as real gray fills.",
   "sample_radius": 12,
+  "blur": {"median": 5, "gauss": 0},
+  "black_l": 42,
   "classes": [
     {"code": "res-low",        "name": "Low (single family, 0-8 u/ac)",     "x": 782,  "y": 3895},
     {"code": "res-lowmed",     "name": "Low Medium (two family, 9-13)",     "x": 782,  "y": 3988},
@@ -14,5 +16,27 @@
     {"code": "industrial",     "name": "Industrial",                        "x": 3420, "y": 4183},
     {"code": "gov-community",  "name": "Government and Community Facilities","x": 3420, "y": 4270},
     {"code": "apt-office",     "name": "Apartments & Offices",              "x": 3420, "y": 4343}
+  ],
+  "map_samples": [
+    {"code": "res-low",       "x": 2650, "y": 1600},
+    {"code": "res-low",       "x": 2400, "y": 4050},
+    {"code": "res-low",       "x": 4200, "y": 4050},
+    {"code": "res-highmed",   "x": 2250, "y": 3750},
+    {"code": "res-highmed",   "x": 3100, "y": 1950},
+    {"code": "res-highmed",   "x": 2200, "y": 3830},
+    {"code": "public",        "x": 2090, "y": 3670},
+    {"code": "semi-public",   "x": 3700, "y": 2800},
+    {"code": "semi-public",   "x": 1950, "y": 3650},
+    {"code": "semi-public",   "x": 1300, "y": 1830},
+    {"code": "com-neighborhood", "x": 1380, "y": 2010},
+    {"code": "com-general",   "x": 1520, "y": 2010},
+    {"code": "com-general",   "x": 3700, "y": 1835},
+    {"code": "com-office",    "x": 3240, "y": 2330},
+    {"code": "com-office",    "x": 3250, "y": 2350},
+    {"code": "industrial",    "x": 4560, "y": 4300},
+    {"code": "gov-community", "x": 3400, "y": 2600},
+    {"code": "gov-community", "x": 3450, "y": 2850},
+    {"code": "apt-office",    "x": 3780, "y": 2000},
+    {"code": "apt-office",    "x": 3750, "y": 2080}
   ]
 }

@@ -90,6 +90,51 @@ viewer, but no Mapbox/Observable dependency).
   vs 2024 for every year (make_qa(name, "2024-front")) to catch chain drift.
 - report.tsv: name, anchor(method), points, rms_px.
 
+## CLASSIFICATION (started 2026-07-08, quality rebuild same day)
+- Goal: per-parcel GLUP designation per year → acreage trends + click history.
+- Engine: scripts/classify.py + classify/legends/{year}.json. Parcels:
+  scripts/parcels.py (od_REA_Property_Polygons, 38,683, RPCMSTR) rasterized
+  to 8ft grid; county mask od_County_Polygon (16,690 ac). Lab nearest-
+  exemplar, a/b weighted 1.0 over L 0.6, MAX_LAB_DIST 22.
+- v1 (single legend-swatch exemplar + gauss blur) failed user QA: white
+  holes in pale N-Arlington yellow, gray road bleed as gov-community,
+  green over-assignment. Lessons that fixed it:
+  * Lithograph prints drift spatially — legend swatch alone can't cover the
+    map. "map_samples" in config = extra exemplars at known grid px
+    (multi-exemplar min-distance per class).
+  * NEVER Gaussian-blur scanned lithos: white streets + black casings smear
+    into the exact gray of real gray fills (Ft Myer vs paper+streets are
+    IDENTICAL Lab after blur). Per-edition "blur" config: 1961 median-only.
+  * Scanned ink is L≈26–50 not <30 → per-edition "black_l" (1961: 42);
+    ink must be neutral (chroma<18) or dark magenta/industrial fills die.
+  * Ink halo: dilate unblurred black mask 3px, exclude — kills the blur
+    ring that mimics greenway/dark classes. Mask from UNBLURRED image
+    (median eats thin casings entirely).
+  * Raw (non-parcel) pixels: exclude TIGER street buffer (roads carry no
+    designation) + require local solidity (paper+ink fraction in 15px
+    window ≤0.2). Inside parcels trust color — a parcel is never a road.
+  * 2024 oah-low is near-white pale blue (chroma 7.2) → per-edition
+    "white_chroma" (2024: 5; the GeoPDF's real white is chroma 0–3).
+  * Large parcels straddle 1961 designation boundaries (Four Mile Run
+    corridor parcel: green upstream + industrial at Shirlington) →
+    winner-take-all only when share≥0.6 for parcels >4000px; else raw.
+  * MIN_CLASSIFIED_FRAC 0.15 (parcel mostly white = unpainted, not voted).
+- VALIDATION vs official od_GLUP_Sectors (tiles county incl. ROW, 16,692
+  ac): my 2024 per-class ≈ 0.8× official across the board = the excluded
+  street ROW share; semi-public 0.98× (few internal streets) confirms.
+  oah-low runs ~40% high (residual pale bleed) — known.
+- 1961 quirks: Motel merged into General Business (same red); Office
+  Buildings = red crosshatch (Court House), sampled on-map; apt-office is
+  pale BLUE (east Rosslyn); black-hatched school/park sites blur near-black
+  and stay unclassified (parcel vote rescues edges). arlgis REST needs
+  Mozilla UA. gdal_rasterize in GDAL 3.4 can't burn SQL alias fields.
+- Coordinate-picking workflow for new legend configs: render county-grid
+  BGR (gdalwarp to 8ft bbox), save gridded PNG with 100px-labeled lines,
+  eyeball sample points, probe median Lab before committing to config.
+- TODO: legend configs for other 19 editions; designation crosswalk
+  (friend's domain); viewer integration (indexed PNG lookup + click
+  history); acreage trends (report parcel-voted acres; ROW excluded).
+
 ## PUBLISHED (2026-07-06)
 - Live: https://rorystolzenberg.github.io/arlington-glup-history/
 - Repo: github.com/RoryStolzenberg/arlington-glup-history (Pages from /docs
