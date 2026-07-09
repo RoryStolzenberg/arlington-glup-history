@@ -200,9 +200,16 @@ viewer, but no Mapbox/Observable dependency).
 - Coordinate-picking workflow for new legend configs: render county-grid
   BGR (gdalwarp to 8ft bbox), save gridded PNG with 100px-labeled lines,
   eyeball sample points, probe median Lab before committing to config.
-- TODO: designation crosswalk (friend's domain); viewer integration
-  (indexed PNG lookup + click history); acreage trends (report
-  parcel-voted acres; ROW excluded).
+- TODO: designation crosswalk (friend's domain); acreage/capacity
+  analysis phase 2.
+- DONE (2026-07-08): classify/acreage_trend.csv (21 years x class);
+  viewer legend panel + click-a-parcel history (scripts/webdata.py →
+  docs/data/: parcel_ids.png = HALF-RES 16ft/px grid with parcel index
+  in RGB bytes — half res keeps the canvas under iOS's ~16.7 Mpx
+  limit — history.json = per-parcel RPC/bbox/base-36 per-year class
+  string, legends.json = per-year classes w/ sheet-sampled hex).
+  Click → proj4 EPSG:2283 (verified vs gdaltransform, 0.9 ft) → grid
+  px → id. Rerun webdata.py whenever classifications change.
 
 ### All 21 editions configured (2026-07-08, old-era batch)
 - Eras: 1961/1964/1966 = 12-class litho (same legend layout, split
