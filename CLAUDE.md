@@ -11,7 +11,9 @@ editions (1961–2024) + a static MapLibre web viewer to browse/compare them.
 - `sources/` — original PDFs/JPGs (gitignored) + manifest.tsv
 - `scripts/` — download.sh, extract.py, georef.py, corr_match.py, tiles.py
 - `work/` — rgb/ (plain renders), georef/ (EPSG:2283 GeoTIFFs), qa/ (blends)
-- `web/` — static viewer (index.html/app.js/style.css, tiles/ gitignored)
+- `docs/` — static viewer, served by GitHub Pages (index.html/app.js/
+  style.css, data/ for parcel-history lookup; tiles/ pmtiles committed,
+  XYZ dirs gitignored)
 - `experiments/` — one-off matching experiments
 - `_junk/` — gitignored session diagnostics (probe/QA scripts + rendered
   images rescued from the ephemeral scratchpad; see its README)
