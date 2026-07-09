@@ -1,0 +1,346 @@
+year,code,name,du_per_acre,far,hotel,source,notes
+1961,res-low,"Low (single family, 0-8 u/ac)",0-8 du/ac gross,,,sheet,single family
+1961,res-lowmed,"Low Medium (two family, 9-13)",9-13 du/ac gross,,,sheet,two family
+1961,res-highmed,"High Medium (multi-family, 14-39)",14-39 du/ac gross,,,sheet,multi-family
+1961,public,Public open space,,,,sheet,"open land, playgrounds, schools, parks"
+1961,semi-public,Semi-public open space,,,,sheet,"open land, institutions, parks, rec facilities"
+1961,greenway,Private greenway,,,,sheet,private greenway
+1961,com-neighborhood,Neighborhood Shopping,,,,sheet,neighborhood shopping
+1961,com-general,General Business (incl. Motel),,,,sheet,"general business; Motel merged (same red, M symbol)"
+1961,com-office,Office Buildings,,,,sheet,office buildings
+1961,industrial,Industrial,,,,sheet,
+1961,gov-community,Government and Community Facilities,,,,sheet,government and community facilities
+1961,apt-office,Apartments & Offices,,,,sheet,apartments & offices; no density printed
+1964,res-low,"Low (single family, 0-8 u/ac)",0-8 du/ac gross,,,sheet,single family
+1964,res-lowmed,"Low Medium (two family, 9-13)",9-13 du/ac gross,,,sheet,two family
+1964,res-highmed,"High Medium (multi-family, 14-39)",14-39 du/ac gross,,,sheet,multi-family
+1964,public,Public open space,,,,sheet,"open land, playgrounds, schools, parks"
+1964,semi-public,Semi-public open space,,,,sheet,"open land, institutions, parks, rec facilities"
+1964,greenway,Private greenway,,,,sheet,private greenway
+1964,com-neighborhood,Neighborhood Shopping,,,,sheet,neighborhood shopping
+1964,com-general,General Business (incl. Motel),,,,sheet,"general business; Motel merged (same red, M symbol)"
+1964,com-office,Office Buildings,,,,sheet,office buildings
+1964,industrial,Industrial,,,,sheet,
+1964,gov-community,Government and Community Facilities,,,,sheet,government and community facilities
+1964,apt-office,Apartments & Offices,,,,sheet,apartments & offices; no density printed
+1966,res-low,"Low (single family, 0-8 u/ac)",0-8 du/ac gross,,,sheet,single family
+1966,res-lowmed,"Low Medium (two family, 9-13)",9-13 du/ac gross,,,sheet,two family
+1966,res-highmed,"High Medium (multi-family, 14-39)",14-39 du/ac gross,,,sheet,multi-family
+1966,public,Public open space,,,,sheet,"open land, playgrounds, schools, parks"
+1966,semi-public,Semi-public open space,,,,sheet,"open land, institutions, parks, rec facilities"
+1966,greenway,Private greenway,,,,sheet,private greenway
+1966,com-neighborhood,Neighborhood Shopping,,,,sheet,neighborhood shopping
+1966,com-general,General Business (incl. Motel),,,,sheet,"general business; Motel merged (same red, M symbol)"
+1966,com-office,Office Buildings,,,,sheet,office buildings
+1966,industrial,Industrial,,,,sheet,
+1966,gov-community,Government and Community Facilities,,,,sheet,government and community facilities
+1966,apt-office,Apartments & Offices,,,,sheet,apartments & offices; no density printed
+1975,res-low-1-10,Residential Low (1-10 u/ac),1-10 du/ac,,,sheet,
+1975,res-low-11-15,Residential Low (11-15 u/ac),11-15 du/ac,,,sheet,
+1975,res-lowmed,Residential Low Medium (16-30),16-30 du/ac,,,sheet,
+1975,res-med,Residential Medium (31-72),31-72 du/ac,,,sheet,
+1975,res-highmed,Residential High Medium (73-90),73-90 du/ac apt,,72-135 du/ac hotel,sheet,
+1975,res-high,Residential High (91-135),91-135 du/ac apt,,136-210 du/ac hotel,sheet,
+1975,public,Public,,,,sheet,"parks, public schools, parkways, libraries"
+1975,semi-public,Semi-Public,,,,sheet,"country clubs, churches, private schools/cemeteries"
+1975,gov-community,Government and Community Facilities,,,,sheet,"county/state/federal, hospitals, utilities, military, airports"
+1975,svc-commercial,Service Commercial,,max 1.0 FAR,,sheet,generally 1-3 stories
+1975,com-general,General Commercial,,,,sheet,generally max 7 stories
+1975,svc-industry,Service Industry,,,,sheet,"wholesale, storage, light manufacturing"
+1975,oah-low,Office-Apartment-Hotel Low,up to 90 du/ac apt,1.5 FAR office,up to 135 du/ac hotel,sheet,1975 sheet: 'no property is classified within this designation at present'
+1975,oah-med,Office-Apartment-Hotel Medium,up to 115 du/ac apt,2.5 FAR office,up to 180 du/ac hotel,sheet,
+1975,oah-high,Office-Apartment-Hotel High,up to 135 du/ac apt,3.5 FAR office,up to 210 du/ac hotel,sheet,
+1979,res-low-1-10,Residential Low (1-10 u/ac),1-10 du/ac,,,sheet,
+1979,res-low-11-15,Residential Low (11-15 u/ac),11-15 du/ac,,,sheet,
+1979,res-lowmed,Residential Low Medium (16-30),16-30 du/ac,,,sheet,
+1979,res-med,Residential Medium (31-72),31-72 du/ac,,,sheet,
+1979,res-highmed,Residential High Medium (73-90),73-90 du/ac apt,,72-135 du/ac hotel,sheet,
+1979,res-high,Residential High (91-135),91-135 du/ac apt,,136-210 du/ac hotel,sheet,
+1979,public,Public,,,,sheet,"parks, public schools, parkways, libraries"
+1979,semi-public,Semi-Public,,,,sheet,"country clubs, churches, private schools/cemeteries"
+1979,gov-community,Government and Community Facilities,,,,sheet,"county/state/federal, hospitals, utilities, military, airports"
+1979,svc-commercial,Service Commercial,,max 1.0 FAR,,sheet,generally 1-3 stories
+1979,com-general,General Commercial,,,,sheet,generally max 7 stories
+1979,svc-industry,Service Industry,,,,sheet,"wholesale, storage, light manufacturing"
+1979,oah-low,Office-Apartment-Hotel Low,up to 72 du/ac apt,1.5 FAR office,up to 135 du/ac hotel,sheet,apt cap reduced from 90 (1975)
+1979,oah-med,Office-Apartment-Hotel Medium,up to 115 du/ac apt,2.5 FAR office,up to 180 du/ac hotel,sheet,
+1979,oah-high,Office-Apartment-Hotel High,up to 135 du/ac apt,3.5 FAR office,up to 210 du/ac hotel,sheet,
+1983,res-low-1-10,Residential Low (1-10 u/ac),1-10 du/ac,,,sheet,
+1983,res-low-11-15,Residential Low (11-15 u/ac),11-15 du/ac,,,sheet,
+1983,res-lowmed,Residential Low Medium (16-30),16-30 du/ac,,,sheet,
+1983,res-med,Residential Medium (31-72),31-72 du/ac,,,sheet,
+1983,res-highmed,Residential High Medium (3.24 FAR),,3.24 FAR residential,72-135 du/ac hotel,sheet,changed from 73-90 du/ac (1979); striped mu-highmed variant (max 3.24 FAR incl office/retail) printed but chromatically inseparable - counted here
+1983,res-high,Residential High (91-135),91-135 du/ac apt,,136-210 du/ac hotel,sheet,
+1983,public,Public,,,,sheet,"parks, public schools, parkways, libraries"
+1983,semi-public,Semi-Public,,,,sheet,"country clubs, churches, private schools/cemeteries"
+1983,gov-community,Government and Community Facilities,,,,sheet,"county/state/federal, hospitals, utilities, military, airports"
+1983,svc-commercial,Service Commercial,,max 1.0 FAR,,sheet,generally 1-3 stories
+1983,com-general,General Commercial,,,,sheet,generally max 7 stories; striped mu-med variant printed but chromatically inseparable - counted here
+1983,svc-industry,Service Industry,,,,sheet,"wholesale, storage, light manufacturing"
+1983,oah-low,Office-Apartment-Hotel Low,up to 72 du/ac apt,1.5 FAR office,up to 135 du/ac hotel,sheet,apt cap reduced from 90 (1975)
+1983,oah-med,Office-Apartment-Hotel Medium,up to 115 du/ac apt,2.5 FAR office,up to 180 du/ac hotel,sheet,
+1983,oah-high,Office-Apartment-Hotel High,up to 135 du/ac apt,3.5 FAR office,up to 210 du/ac hotel,sheet,
+1987,res-low-1-10,Residential Low (1-10 u/ac),1-10 du/ac,,,sheet,
+1987,res-low-11-15,Residential Low (11-15 u/ac),11-15 du/ac,,,sheet,
+1987,res-lowmed,Residential Low-Medium (16-36 u/ac),16-36 du/ac,,,sheet,upper bound raised from 30 (1983)
+1987,res-med,Residential Medium (37-72 u/ac),37-72 du/ac,,,sheet,lower bound raised from 31 (1983)
+1987,res-highmed,Residential High-Medium (3.24 FAR),,3.24 FAR residential,,sheet,
+1987,res-high,Residential High (4.8 FAR),,4.8 FAR residential,3.8 FAR hotel,sheet,
+1987,svc-commercial,Service Commercial,,max 1.5 FAR,,sheet,generally 1-4 stories; raised from 1.0 FAR (1983)
+1987,com-general,General Commercial,,,,sheet,generally max 7 stories
+1987,svc-industry,Service Industry,,,,sheet,"wholesale, storage, light manufacturing"
+1987,public,Public,,,,sheet,"parks, public schools, parkways, libraries"
+1987,semi-public,Semi-Public,,,,sheet,"country clubs, churches, private schools/cemeteries"
+1987,gov-community,Government and Community Facilities,,,,sheet,"county/state/federal, hospitals, utilities, military, airports"
+1987,oah-low,Office-Apartment-Hotel Low,up to 72 du/ac apt,1.5 FAR office,up to 110 du/ac hotel,sheet,hotel cap reduced from 135 (1983)
+1987,oah-med,Office-Apartment-Hotel Medium,up to 115 du/ac apt,2.5 FAR office,up to 180 du/ac hotel,sheet,
+1987,oah-high,Office-Apartment-Hotel High,up to 4.8 FAR apt,3.8 FAR office,up to 3.8 FAR hotel,sheet,changed from 3.5 FAR/135/210 (1983)
+1987,mu-med,Medium Density Mixed-Use,,3.0 FAR (+1.0 FAR residential special provision),,sheet,
+1987,mu-highmed,High-Medium Residential Mixed-Use,,up to 3.24 FAR incl office/retail,,sheet,
+1987,mu-coord,Coordinated Mixed-Use Development District,,up to 6.0 FAR (office max 3.0 FAR),,sheet,"high-density district, actual density by site size"
+1990,res-low-1-10,Residential Low (1-10 u/ac),1-10 du/ac,,,era,
+1990,res-low-11-15,Residential Low (11-15 u/ac),11-15 du/ac,,,era,
+1990,res-lowmed,Residential Low-Medium (16-36 u/ac),16-36 du/ac,,,era,upper bound raised from 30 (1983)
+1990,res-med,Residential Medium (37-72 u/ac),37-72 du/ac,,,era,lower bound raised from 31 (1983)
+1990,res-highmed,Residential High-Medium (3.24 FAR),,3.24 FAR residential,,era,
+1990,res-high,Residential High (4.8 FAR),,4.8 FAR residential,3.8 FAR hotel,era,
+1990,svc-commercial,Service Commercial,,max 1.5 FAR,,era,generally 1-4 stories; raised from 1.0 FAR (1983)
+1990,com-general,General Commercial,,,,era,generally max 7 stories
+1990,svc-industry,Service Industry,,,,era,"wholesale, storage, light manufacturing"
+1990,public,Public,,,,era,"parks, public schools, parkways, libraries"
+1990,semi-public,Semi-Public,,,,era,"country clubs, churches, private schools/cemeteries"
+1990,gov-community,Government and Community Facilities,,,,era,"county/state/federal, hospitals, utilities, military, airports"
+1990,oah-low,Office-Apartment-Hotel Low,up to 72 du/ac apt,1.5 FAR office,up to 110 du/ac hotel,era,hotel cap reduced from 135 (1983)
+1990,oah-med,Office-Apartment-Hotel Medium,up to 115 du/ac apt,2.5 FAR office,up to 180 du/ac hotel,era,
+1990,oah-high,Office-Apartment-Hotel High,up to 4.8 FAR apt,3.8 FAR office,up to 3.8 FAR hotel,era,changed from 3.5 FAR/135/210 (1983)
+1990,mu-med,Medium Density Mixed-Use,,3.0 FAR (+1.0 FAR residential special provision),,era,
+1990,mu-highmed,High-Medium Residential Mixed-Use,,up to 3.24 FAR incl office/retail,,era,
+1990,mu-coord,Coordinated Mixed-Use Development District,,up to 6.0 FAR (office max 3.0 FAR),,era,"high-density district, actual density by site size"
+1996,res-low-1-10,Residential Low (1-10 u/ac),1-10 du/ac,,,era,
+1996,res-low-11-15,Residential Low (11-15 u/ac),11-15 du/ac,,,era,
+1996,res-lowmed,Residential Low-Medium (16-36 u/ac),16-36 du/ac,,,era,upper bound raised from 30 (1983)
+1996,res-med,Residential Medium (37-72 u/ac),37-72 du/ac,,,era,lower bound raised from 31 (1983)
+1996,res-highmed,Residential High-Medium (3.24 FAR),,3.24 FAR residential,,era,
+1996,res-high,Residential High (4.8 FAR),,4.8 FAR residential,3.8 FAR hotel,era,
+1996,svc-commercial,Service Commercial,,max 1.5 FAR,,era,generally 1-4 stories; raised from 1.0 FAR (1983)
+1996,com-general,General Commercial,,,,era,generally max 7 stories
+1996,svc-industry,Service Industry,,,,era,"wholesale, storage, light manufacturing"
+1996,public,Public,,,,era,"parks, public schools, parkways, libraries"
+1996,semi-public,Semi-Public,,,,era,"country clubs, churches, private schools/cemeteries"
+1996,gov-community,Government and Community Facilities,,,,era,"county/state/federal, hospitals, utilities, military, airports"
+1996,oah-low,Office-Apartment-Hotel Low,up to 72 du/ac apt,1.5 FAR office,up to 110 du/ac hotel,era,hotel cap reduced from 135 (1983)
+1996,oah-med,Office-Apartment-Hotel Medium,up to 115 du/ac apt,2.5 FAR office,up to 180 du/ac hotel,era,
+1996,oah-high,Office-Apartment-Hotel High,up to 4.8 FAR apt,3.8 FAR office,up to 3.8 FAR hotel,era,changed from 3.5 FAR/135/210 (1983)
+1996,mu-med,Medium Density Mixed-Use,,3.0 FAR (+1.0 FAR residential special provision),,era,
+1996,mu-highmed,High-Medium Residential Mixed-Use,,up to 3.24 FAR incl office/retail,,era,
+1996,mu-coord,Coordinated Mixed-Use Development District,,up to 6.0 FAR (office max 3.0 FAR),,era,"high-density district, actual density by site size"
+2004,res-low-1-10,Residential Low (1-10 u/ac),1-10 du/ac,,,sheet,
+2004,res-low-11-15,Residential Low (11-15 u/ac),11-15 du/ac,,,sheet,
+2004,res-lowmed,Residential Low-Medium (16-36 u/ac),16-36 du/ac,,,sheet,upper bound raised from 30 (1983)
+2004,res-med,Residential Medium (37-72 u/ac),32-72 du/ac,,,sheet,as printed on 2004 sheet; 1987 and 2013 print 37-72 - likely misprint
+2004,res-highmed,Residential High-Medium (3.24 FAR),,3.24 FAR residential,,sheet,
+2004,res-high,Residential High (4.8 FAR),,4.8 FAR residential,3.8 FAR hotel,sheet,
+2004,svc-commercial,Service Commercial,,max 1.5 FAR,,sheet,generally 1-4 stories; raised from 1.0 FAR (1983)
+2004,com-general,General Commercial,,,,sheet,generally max 7 stories
+2004,svc-industry,Service Industry,,,,sheet,"wholesale, storage, light manufacturing"
+2004,public,Public,,,,sheet,"parks, public schools, parkways, libraries"
+2004,semi-public,Semi-Public,,,,sheet,"country clubs, churches, private schools/cemeteries"
+2004,gov-community,Government and Community Facilities,,,,sheet,"county/state/federal, hospitals, utilities, military, airports"
+2004,oah-low,Office-Apartment-Hotel Low,up to 72 du/ac apt,1.5 FAR office,up to 110 du/ac hotel,sheet,hotel cap reduced from 135 (1983)
+2004,oah-med,Office-Apartment-Hotel Medium,up to 115 du/ac apt,2.5 FAR office,up to 180 du/ac hotel,sheet,
+2004,oah-high,Office-Apartment-Hotel High,up to 4.8 FAR apt,3.8 FAR office,up to 3.8 FAR hotel,sheet,changed from 3.5 FAR/135/210 (1983)
+2004,mu-med,Medium Density Mixed-Use,,3.0 FAR (+1.0 FAR residential special provision),,sheet,
+2004,mu-highmed,High-Medium Residential Mixed-Use,,up to 3.24 FAR incl office/retail,,sheet,
+2004,mu-coord,Coordinated Mixed-Use Development District,,up to 6.0 FAR (office max 3.0 FAR),,sheet,"high-density district, actual density by site size"
+2013,res-low-1-10,Residential Low (1-10 u/ac),1-10 du/ac,,,sheet,
+2013,res-low-11-15,Residential Low (11-15 u/ac),11-15 du/ac,,,sheet,
+2013,res-lowmed,Residential Low-Medium,16-36 du/ac,,,sheet,upper bound raised from 30 (1983)
+2013,res-med,Residential Medium,up to 37-72 du/ac,,,sheet,
+2013,res-highmed,Residential High-Medium,,3.24 FAR residential,,sheet,
+2013,res-high,Residential High,,4.8 FAR residential,3.8 FAR hotel,sheet,
+2013,svc-commercial,Service Commercial,,max 1.5 FAR,,sheet,1-4 stories; special provisions within Columbia Pike Special Revitalization District
+2013,com-general,General Commercial,,,,sheet,generally max 7 stories
+2013,svc-industry,Service Industry,,,,sheet,"wholesale, storage, light manufacturing"
+2013,public,Public,,,,sheet,"parks, public schools, parkways, libraries"
+2013,semi-public,Semi-Public,,,,sheet,"country clubs, churches, private schools/cemeteries"
+2013,gov-community,Government and Community Facilities,,,,sheet,"county/state/federal, hospitals, utilities, military, airports"
+2013,oah-low,Office-Apartment-Hotel Low,up to 72 du/ac apt,1.5 FAR office,up to 110 du/ac hotel,sheet,hotel cap reduced from 135 (1983)
+2013,oah-med,Office-Apartment-Hotel Medium,up to 115 du/ac apt,2.5 FAR office,up to 180 du/ac hotel,sheet,
+2013,oah-high,Office-Apartment-Hotel High,up to 4.8 FAR apt,3.8 FAR office,up to 3.8 FAR hotel,sheet,changed from 3.5 FAR/135/210 (1983)
+2013,mu-med,Medium Density Mixed-Use,,3.0 FAR (+1.0 FAR residential special provision),,sheet,
+2013,mu-highmed,High-Medium Residential Mixed-Use,,up to 3.24 FAR incl office/retail,,sheet,
+2013,mu-coord,Coordinated Mixed-Use Development,,up to 6.0 FAR (office max 3.0 FAR),,sheet,"high-density district, actual density by site size"
+2014,res-low-1-10,Residential Low (1-10 u/ac),1-10 du/ac,,,era,
+2014,res-low-11-15,Residential Low (11-15 u/ac),11-15 du/ac,,,era,
+2014,res-lowmed,Residential Low-Medium,16-36 du/ac,,,era,upper bound raised from 30 (1983)
+2014,res-med,Residential Medium,up to 37-72 du/ac,,,era,
+2014,res-highmed,Residential High-Medium,,3.24 FAR residential,,era,
+2014,res-high,Residential High,,4.8 FAR residential,3.8 FAR hotel,era,
+2014,svc-commercial,Service Commercial,,max 1.5 FAR,,era,1-4 stories; special provisions within Columbia Pike Special Revitalization District
+2014,com-general,General Commercial,,,,era,generally max 7 stories
+2014,svc-industry,Service Industry,,,,era,"wholesale, storage, light manufacturing"
+2014,public,Public,,,,era,"parks, public schools, parkways, libraries"
+2014,semi-public,Semi-Public,,,,era,"country clubs, churches, private schools/cemeteries"
+2014,gov-community,Government and Community Facilities,,,,era,"county/state/federal, hospitals, utilities, military, airports"
+2014,oah-low,Office-Apartment-Hotel Low,up to 72 du/ac apt,1.5 FAR office,up to 110 du/ac hotel,era,hotel cap reduced from 135 (1983)
+2014,oah-med,Office-Apartment-Hotel Medium,up to 115 du/ac apt,2.5 FAR office,up to 180 du/ac hotel,era,
+2014,oah-high,Office-Apartment-Hotel High,up to 4.8 FAR apt,3.8 FAR office,up to 3.8 FAR hotel,era,changed from 3.5 FAR/135/210 (1983)
+2014,mu-med,Medium Density Mixed-Use,,3.0 FAR (+1.0 FAR residential special provision),,era,
+2014,mu-highmed,High-Medium Residential Mixed-Use,,up to 3.24 FAR incl office/retail,,era,
+2014,mu-coord,Coordinated Mixed-Use Development,,up to 6.0 FAR (office max 3.0 FAR),,era,"high-density district, actual density by site size"
+2016,res-low-1-10,Residential Low (1-10 u/ac),1-10 du/ac,,,era,
+2016,res-low-11-15,Residential Low (11-15 u/ac),11-15 du/ac,,,era,
+2016,res-lowmed,Residential Low-Medium,16-36 du/ac,,,era,upper bound raised from 30 (1983)
+2016,res-med,Residential Medium,up to 37-72 du/ac,,,era,
+2016,res-highmed,Residential High-Medium,,3.24 FAR residential,,era,
+2016,res-high,Residential High,,4.8 FAR residential,3.8 FAR hotel,era,
+2016,svc-commercial,Service Commercial,,max 1.5 FAR,,era,1-4 stories; special provisions within Columbia Pike Special Revitalization District
+2016,com-general,General Commercial,,,,era,generally max 7 stories
+2016,svc-industry,Service Industry,,,,era,"wholesale, storage, light manufacturing"
+2016,public,Public,,,,era,"parks, public schools, parkways, libraries"
+2016,semi-public,Semi-Public,,,,era,"country clubs, churches, private schools/cemeteries"
+2016,gov-community,Government and Community Facilities,,,,era,"county/state/federal, hospitals, utilities, military, airports"
+2016,oah-low,Office-Apartment-Hotel Low,up to 72 du/ac apt,1.5 FAR office,up to 110 du/ac hotel,era,hotel cap reduced from 135 (1983)
+2016,oah-med,Office-Apartment-Hotel Medium,up to 115 du/ac apt,2.5 FAR office,up to 180 du/ac hotel,era,
+2016,oah-high,Office-Apartment-Hotel High,up to 4.8 FAR apt,3.8 FAR office,up to 3.8 FAR hotel,era,changed from 3.5 FAR/135/210 (1983)
+2016,mu-med,Medium Density Mixed-Use,,3.0 FAR (+1.0 FAR residential special provision),,era,
+2016,mu-highmed,High-Medium Residential Mixed-Use,,up to 3.24 FAR incl office/retail,,era,
+2016,mu-coord,Coordinated Mixed-Use Development,,up to 6.0 FAR (office max 3.0 FAR),,era,"high-density district, actual density by site size"
+2017,res-low-1-10,Residential Low (1-10 u/ac),1-10 du/ac,,,era,
+2017,res-low-11-15,Residential Low (11-15 u/ac),11-15 du/ac,,,era,
+2017,res-lowmed,Residential Low-Medium,16-36 du/ac,,,era,upper bound raised from 30 (1983)
+2017,res-med,Residential Medium,up to 37-72 du/ac,,,era,
+2017,res-highmed,Residential High-Medium,,3.24 FAR residential,,era,
+2017,res-high,Residential High,,4.8 FAR residential,3.8 FAR hotel,era,
+2017,svc-commercial,Service Commercial,,max 1.5 FAR,,era,1-4 stories; special provisions within Columbia Pike Special Revitalization District
+2017,com-general,General Commercial,,,,era,generally max 7 stories
+2017,svc-industry,Service Industry,,,,era,"wholesale, storage, light manufacturing"
+2017,public,Public,,,,era,"parks, public schools, parkways, libraries"
+2017,semi-public,Semi-Public,,,,era,"country clubs, churches, private schools/cemeteries"
+2017,gov-community,Government and Community Facilities,,,,era,"county/state/federal, hospitals, utilities, military, airports"
+2017,oah-low,Office-Apartment-Hotel Low,up to 72 du/ac apt,1.5 FAR office,up to 110 du/ac hotel,era,hotel cap reduced from 135 (1983)
+2017,oah-med,Office-Apartment-Hotel Medium,up to 115 du/ac apt,2.5 FAR office,up to 180 du/ac hotel,era,
+2017,oah-high,Office-Apartment-Hotel High,up to 4.8 FAR apt,3.8 FAR office,up to 3.8 FAR hotel,era,changed from 3.5 FAR/135/210 (1983)
+2017,mu-med,Medium Density Mixed-Use,,3.0 FAR (+1.0 FAR residential special provision),,era,
+2017,mu-highmed,High-Medium Residential Mixed-Use,,up to 3.24 FAR incl office/retail,,era,
+2017,mu-coord,Coordinated Mixed-Use Development,,up to 6.0 FAR (office max 3.0 FAR),,era,"high-density district, actual density by site size"
+2018,res-low-1-10,Residential Low (1-10 u/ac),1-10 du/ac,,,era,
+2018,res-low-11-15,Residential Low (11-15 u/ac),11-15 du/ac,,,era,
+2018,res-lowmed,Residential Low-Medium,16-36 du/ac,,,era,upper bound raised from 30 (1983)
+2018,res-med,Residential Medium,up to 37-72 du/ac,,,era,
+2018,res-highmed,Residential High-Medium,,3.24 FAR residential,,era,
+2018,res-high,Residential High,,4.8 FAR residential,3.8 FAR hotel,era,
+2018,svc-commercial,Service Commercial,,max 1.5 FAR,,era,1-4 stories; special provisions within Columbia Pike Special Revitalization District
+2018,com-general,General Commercial,,,,era,generally max 7 stories
+2018,svc-industry,Service Industry,,,,era,"wholesale, storage, light manufacturing"
+2018,public,Public,,,,era,"parks, public schools, parkways, libraries"
+2018,semi-public,Semi-Public,,,,era,"country clubs, churches, private schools/cemeteries"
+2018,gov-community,Government and Community Facilities,,,,era,"county/state/federal, hospitals, utilities, military, airports"
+2018,oah-low,Office-Apartment-Hotel Low,up to 72 du/ac apt,1.5 FAR office,up to 110 du/ac hotel,era,hotel cap reduced from 135 (1983)
+2018,oah-med,Office-Apartment-Hotel Medium,up to 115 du/ac apt,2.5 FAR office,up to 180 du/ac hotel,era,
+2018,oah-high,Office-Apartment-Hotel High,up to 4.8 FAR apt,3.8 FAR office,up to 3.8 FAR hotel,era,changed from 3.5 FAR/135/210 (1983)
+2018,mu-med,Medium Density Mixed-Use,,3.0 FAR (+1.0 FAR residential special provision),,era,
+2018,mu-highmed,High-Medium Residential Mixed-Use,,up to 3.24 FAR incl office/retail,,era,
+2018,mu-coord,Coordinated Mixed-Use Development,,up to 6.0 FAR (office max 3.0 FAR),,era,"high-density district, actual density by site size"
+2019,res-low-1-10,Residential Low (1-10 u/ac),1-10 du/ac,,,era,
+2019,res-low-11-15,Residential Low (11-15 u/ac),11-15 du/ac,,,era,
+2019,res-lowmed,Residential Low-Medium,16-36 du/ac,,,era,upper bound raised from 30 (1983)
+2019,res-med,Residential Medium,up to 37-72 du/ac,,,era,
+2019,res-highmed,Residential High-Medium,,3.24 FAR residential,,era,
+2019,res-high,Residential High,,4.8 FAR residential,3.8 FAR hotel,era,
+2019,svc-commercial,Service Commercial,,max 1.5 FAR,,era,1-4 stories; special provisions within Columbia Pike Special Revitalization District
+2019,svc-industry,Service Industry,,,,era,"wholesale, storage, light manufacturing"
+2019,public,Public,,,,era,"parks, public schools, parkways, libraries"
+2019,semi-public,Semi-Public,,,,era,"country clubs, churches, private schools/cemeteries"
+2019,gov-community,Government and Community Facilities,,,,era,"county/state/federal, hospitals, utilities, military, airports"
+2019,oah-low,Office-Apartment-Hotel Low,up to 72 du/ac apt,1.5 FAR office,up to 110 du/ac hotel,era,hotel cap reduced from 135 (1983)
+2019,oah-med,Office-Apartment-Hotel Medium,up to 115 du/ac apt,2.5 FAR office,up to 180 du/ac hotel,era,
+2019,oah-high,Office-Apartment-Hotel High,up to 4.8 FAR apt,3.8 FAR office,up to 3.8 FAR hotel,era,changed from 3.5 FAR/135/210 (1983)
+2019,mu-med,Medium Density Mixed-Use,,3.0 FAR (+1.0 FAR residential special provision),,era,
+2019,mu-highmed,High-Medium Residential Mixed-Use,,up to 3.24 FAR incl office/retail,,era,
+2019,mu-coord,Coordinated Mixed-Use Development,,up to 6.0 FAR (office max 3.0 FAR),,era,"high-density district, actual density by site size"
+2020,res-low-1-10,Residential Low (1-10 u/ac),1-10 du/ac,,,era,
+2020,res-low-11-15,Residential Low (11-15 u/ac),11-15 du/ac,,,era,
+2020,res-lowmed,Residential Low-Medium,16-36 du/ac,,,era,upper bound raised from 30 (1983)
+2020,res-med,Residential Medium,up to 37-72 du/ac,,,era,
+2020,res-highmed,Residential High-Medium,,3.24 FAR residential,,era,
+2020,res-high,Residential High,,4.8 FAR residential,3.8 FAR hotel,era,
+2020,svc-commercial,Service Commercial,,max 1.5 FAR,,era,1-4 stories; special provisions within Columbia Pike Special Revitalization District
+2020,svc-industry,Service Industry,,,,era,"wholesale, storage, light manufacturing"
+2020,public,Public,,,,era,"parks, public schools, parkways, libraries"
+2020,semi-public,Semi-Public,,,,era,"country clubs, churches, private schools/cemeteries"
+2020,gov-community,Government and Community Facilities,,,,era,"county/state/federal, hospitals, utilities, military, airports"
+2020,oah-low,Office-Apartment-Hotel Low,up to 72 du/ac apt,1.5 FAR office,up to 110 du/ac hotel,era,hotel cap reduced from 135 (1983)
+2020,oah-med,Office-Apartment-Hotel Medium,up to 115 du/ac apt,2.5 FAR office,up to 180 du/ac hotel,era,
+2020,oah-high,Office-Apartment-Hotel High,up to 4.8 FAR apt,3.8 FAR office,up to 3.8 FAR hotel,era,changed from 3.5 FAR/135/210 (1983)
+2020,mu-med,Medium Density Mixed-Use,,3.0 FAR (+1.0 FAR residential special provision),,era,
+2020,mu-highmed,High-Medium Residential Mixed-Use,,up to 3.24 FAR incl office/retail,,era,
+2020,mu-coord,Coordinated Mixed-Use Development,,up to 6.0 FAR (office max 3.0 FAR),,era,"high-density district, actual density by site size"
+2021,res-low-1-10,Residential Low (1-10 u/ac),1-10 du/ac,,,era,
+2021,res-low-11-15,Residential Low (11-15 u/ac),11-15 du/ac,,,era,
+2021,res-lowmed,Residential Low-Medium,16-36 du/ac,,,era,upper bound raised from 30 (1983)
+2021,res-med,Residential Medium,up to 37-72 du/ac,,,era,
+2021,res-highmed,Residential High-Medium,,3.24 FAR residential,,era,
+2021,res-high,Residential High,,4.8 FAR residential,3.8 FAR hotel,era,
+2021,svc-commercial,Service Commercial,,max 1.5 FAR,,era,1-4 stories; special provisions within Columbia Pike Special Revitalization District
+2021,svc-industry,Service Industry,,,,era,"wholesale, storage, light manufacturing"
+2021,public,Public,,,,era,"parks, public schools, parkways, libraries"
+2021,semi-public,Semi-Public,,,,era,"country clubs, churches, private schools/cemeteries"
+2021,gov-community,Government and Community Facilities,,,,era,"county/state/federal, hospitals, utilities, military, airports"
+2021,oah-low,Office-Apartment-Hotel Low,up to 72 du/ac apt,1.5 FAR office,up to 110 du/ac hotel,era,hotel cap reduced from 135 (1983)
+2021,oah-med,Office-Apartment-Hotel Medium,up to 115 du/ac apt,2.5 FAR office,up to 180 du/ac hotel,era,
+2021,oah-high,Office-Apartment-Hotel High,up to 4.8 FAR apt,3.8 FAR office,up to 3.8 FAR hotel,era,changed from 3.5 FAR/135/210 (1983)
+2021,mu-med,Medium Density Mixed-Use,,3.0 FAR (+1.0 FAR residential special provision),,era,
+2021,mu-highmed,High-Medium Residential Mixed-Use,,up to 3.24 FAR incl office/retail,,era,
+2021,mu-coord,Coordinated Mixed-Use Development,,up to 6.0 FAR (office max 3.0 FAR),,era,"high-density district, actual density by site size"
+2022,res-low-1-10,Residential Low (1-10 u/ac),1-10 du/ac,,,era,
+2022,res-low-11-15,Residential Low (11-15 u/ac),11-15 du/ac,,,era,
+2022,res-lowmed,Residential Low-Medium,16-36 du/ac,,,era,upper bound raised from 30 (1983)
+2022,res-med,Residential Medium,up to 37-72 du/ac,,,era,
+2022,res-highmed,Residential High-Medium,,3.24 FAR residential,,era,
+2022,res-high,Residential High,,4.8 FAR residential,3.8 FAR hotel,era,
+2022,svc-commercial,Service Commercial,,max 1.5 FAR,,era,1-4 stories; special provisions within Columbia Pike Special Revitalization District
+2022,svc-industry,Service Industry,,,,era,"wholesale, storage, light manufacturing"
+2022,public,Public,,,,era,"parks, public schools, parkways, libraries"
+2022,semi-public,Semi-Public,,,,era,"country clubs, churches, private schools/cemeteries"
+2022,gov-community,Government and Community Facilities,,,,era,"county/state/federal, hospitals, utilities, military, airports"
+2022,oah-low,Office-Apartment-Hotel Low,up to 72 du/ac apt,1.5 FAR office,up to 110 du/ac hotel,era,hotel cap reduced from 135 (1983)
+2022,oah-med,Office-Apartment-Hotel Medium,up to 115 du/ac apt,2.5 FAR office,up to 180 du/ac hotel,era,
+2022,oah-high,Office-Apartment-Hotel High,up to 4.8 FAR apt,3.8 FAR office,up to 3.8 FAR hotel,era,changed from 3.5 FAR/135/210 (1983)
+2022,mu-med,Medium Density Mixed-Use,,3.0 FAR (+1.0 FAR residential special provision),,era,
+2022,mu-highmed,High-Medium Residential Mixed-Use,,up to 3.24 FAR incl office/retail,,era,
+2022,mu-coord,Coordinated Mixed-Use Development,,up to 6.0 FAR (office max 3.0 FAR),,era,"high-density district, actual density by site size"
+2023,res-low-1-10,Residential Low (1-10 u/ac),1-10 du/ac,,,era,
+2023,res-low-11-15,Residential Low (11-15 u/ac),11-15 du/ac,,,era,
+2023,res-lowmed,Residential Low-Medium,16-36 du/ac,,,era,upper bound raised from 30 (1983)
+2023,res-med,Residential Medium,up to 37-72 du/ac,,,era,
+2023,res-highmed,Residential High-Medium,,3.24 FAR residential,,era,
+2023,res-high,Residential High,,4.8 FAR residential,3.8 FAR hotel,era,
+2023,svc-commercial,Service Commercial,,max 1.5 FAR,,era,1-4 stories; special provisions within Columbia Pike Special Revitalization District
+2023,svc-industry,Service Industry,,,,era,"wholesale, storage, light manufacturing"
+2023,public,Public,,,,era,"parks, public schools, parkways, libraries"
+2023,semi-public,Semi-Public,,,,era,"country clubs, churches, private schools/cemeteries"
+2023,gov-community,Government and Community Facilities,,,,era,"county/state/federal, hospitals, utilities, military, airports"
+2023,oah-low,Office-Apartment-Hotel Low,up to 72 du/ac apt,1.5 FAR office,up to 110 du/ac hotel,era,hotel cap reduced from 135 (1983)
+2023,oah-med,Office-Apartment-Hotel Medium,up to 115 du/ac apt,2.5 FAR office,up to 180 du/ac hotel,era,
+2023,oah-high,Office-Apartment-Hotel High,up to 4.8 FAR apt,3.8 FAR office,up to 3.8 FAR hotel,era,changed from 3.5 FAR/135/210 (1983)
+2023,mu-med,Medium Density Mixed-Use,,3.0 FAR (+1.0 FAR residential special provision),,era,
+2023,mu-highmed,High-Medium Residential Mixed-Use,,up to 3.24 FAR incl office/retail,,era,
+2023,mu-coord,Coordinated Mixed-Use Development,,up to 6.0 FAR (office max 3.0 FAR),,era,"high-density district, actual density by site size"
+2024,res-low-1-10,Residential Low (1-10 u/ac),1-10 du/ac,,,era,
+2024,res-low-11-15,Residential Low (11-15 u/ac),11-15 du/ac,,,era,
+2024,res-lowmed,Residential Low-Medium (16-36),16-36 du/ac,,,era,upper bound raised from 30 (1983)
+2024,res-med,Residential Medium (37-72),up to 37-72 du/ac,,,era,
+2024,res-highmed,Residential High-Medium (3.24 FAR),,3.24 FAR residential,,era,
+2024,res-high,Residential High (4.8 FAR),,4.8 FAR residential,3.8 FAR hotel,era,
+2024,svc-commercial,Service Commercial,,max 1.5 FAR,,era,1-4 stories; special provisions within Columbia Pike Special Revitalization District
+2024,svc-industry,Service Industry,,,,era,"wholesale, storage, light manufacturing"
+2024,public,Public,,,,era,"parks, public schools, parkways, libraries"
+2024,semi-public,Semi-Public,,,,era,"country clubs, churches, private schools/cemeteries"
+2024,gov-community,Government and Community Facilities,,,,era,"county/state/federal, hospitals, utilities, military, airports"
+2024,oah-low,Office-Apartment-Hotel Low,up to 72 du/ac apt,1.5 FAR office,up to 110 du/ac hotel,era,hotel cap reduced from 135 (1983)
+2024,oah-med,Office-Apartment-Hotel Medium,up to 115 du/ac apt,2.5 FAR office,up to 180 du/ac hotel,era,
+2024,oah-high,Office-Apartment-Hotel High,up to 4.8 FAR apt,3.8 FAR office,up to 3.8 FAR hotel,era,changed from 3.5 FAR/135/210 (1983)
+2024,mu-med,Medium Density Mixed-Use,,3.0 FAR (+1.0 FAR residential special provision),,era,
+2024,mu-highmed,High-Medium Residential Mixed-Use,,up to 3.24 FAR incl office/retail,,era,
+2024,mu-coord,Coordinated Mixed-Use Development,,up to 6.0 FAR (office max 3.0 FAR),,era,"high-density district, actual density by site size"
