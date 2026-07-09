@@ -1,0 +1,26 @@
+{
+  "comment": "Swatch centers row-probed from work/rgb/1975-front.tif (3500x5447). First edition with the modern 15-class structure (SET18 minus the three mixed-use classes, which don't exist yet). Legend notes: oah-low carries an asterisk = 'no property is classified within this designation at present', so oah-low acreage should be ~0. Stippled overlay on the map indicates current public ownership (black stipple over any color) - watch for darkened misreads. Paper chroma ~8, so white_chroma 11.",
+  "sample_radius": 14,
+  "blur": {"median": 5, "gauss": 0},
+  "black_l": 42,
+  "white_chroma": 11,
+  "ink_halo": 2,
+  "classes": [
+    {"code": "res-low-1-10",  "name": "Residential Low (1-10 u/ac)",       "x": 118, "y": 4217},
+    {"code": "res-low-11-15", "name": "Residential Low (11-15 u/ac)",      "x": 118, "y": 4273},
+    {"code": "res-lowmed",    "name": "Residential Low Medium (16-30)",    "x": 118, "y": 4328},
+    {"code": "res-med",       "name": "Residential Medium (31-72)",        "x": 118, "y": 4381},
+    {"code": "res-highmed",   "name": "Residential High Medium (73-90)",   "x": 118, "y": 4436},
+    {"code": "res-high",      "name": "Residential High (91-135)",         "x": 118, "y": 4499},
+    {"code": "public",        "name": "Public",                            "x": 118, "y": 4750},
+    {"code": "semi-public",   "name": "Semi-Public",                       "x": 118, "y": 4922},
+    {"code": "gov-community", "name": "Government and Community Facilities","x": 118, "y": 5077},
+    {"code": "svc-commercial","name": "Service Commercial",                "x": 880, "y": 4217},
+    {"code": "com-general",   "name": "General Commercial",                "x": 880, "y": 4358},
+    {"code": "svc-industry",  "name": "Service Industry",                  "x": 880, "y": 4513},
+    {"code": "oah-low",       "name": "Office-Apartment-Hotel Low",        "x": 880, "y": 4775},
+    {"code": "oah-med",       "name": "Office-Apartment-Hotel Medium",     "x": 880, "y": 4844},
+    {"code": "oah-high",      "name": "Office-Apartment-Hotel High",       "x": 880, "y": 4900}
+  ],
+  "solid_max_street": 0.55
+}

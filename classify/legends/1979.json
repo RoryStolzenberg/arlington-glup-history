@@ -1,0 +1,30 @@
+{
+  "comment": "Swatch centers row-probed from work/rgb/1979-front.tif (3500x5449). Same 15-class structure as 1975. res-high is a very dark maroon (L~20, chroma ~22) that sits just above the BLACK_CHROMA=18 escape from the black cut - if res-high acreage comes out low, it needs the 'dark' mechanism with regions like 1987. Stipple overlay = public ownership, as on 1975.",
+  "sample_radius": 14,
+  "blur": {"median": 5, "gauss": 0},
+  "black_l": 42,
+  "white_chroma": 8,
+  "ink_halo": 2,
+  "classes": [
+    {"code": "res-low-1-10",  "name": "Residential Low (1-10 u/ac)",       "x": 168, "y": 4227},
+    {"code": "res-low-11-15", "name": "Residential Low (11-15 u/ac)",      "x": 168, "y": 4283},
+    {"code": "res-lowmed",    "name": "Residential Low Medium (16-30)",    "x": 168, "y": 4338},
+    {"code": "res-med",       "name": "Residential Medium (31-72)",        "x": 168, "y": 4391},
+    {"code": "res-highmed",   "name": "Residential High Medium (73-90)",   "x": 168, "y": 4446},
+    {"code": "res-high",      "name": "Residential High (91-135)",         "x": 168, "y": 4511},
+    {"code": "public",        "name": "Public",                            "x": 168, "y": 4760},
+    {"code": "semi-public",   "name": "Semi-Public",                       "x": 168, "y": 4930},
+    {"code": "gov-community", "name": "Government and Community Facilities","x": 168, "y": 5095},
+    {"code": "svc-commercial","name": "Service Commercial",                "x": 930, "y": 4220},
+    {"code": "com-general",   "name": "General Commercial",                "x": 930, "y": 4363},
+    {"code": "svc-industry",  "name": "Service Industry",                  "x": 930, "y": 4518},
+    {"code": "oah-low",       "name": "Office-Apartment-Hotel Low",        "x": 930, "y": 4795},
+    {"code": "oah-med",       "name": "Office-Apartment-Hotel Medium",     "x": 930, "y": 4849},
+    {"code": "oah-high",      "name": "Office-Apartment-Hotel High",       "x": 930, "y": 4903}
+  ],
+  "solid_max_street": 0.55,
+  "map_samples": [
+    {"code": "com-general",   "x": 3070, "y": 2420},
+    {"code": "svc-commercial","x": 2150, "y": 2592}
+  ]
+}

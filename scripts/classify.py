@@ -320,8 +320,12 @@ def classify_year(year, parcel_ids, parcel_rpc, county_mask, tiger_streets):
     # colors that mimic the darker classes. TIGER centerlines say where
     # the streets are; also require a locally solid fill for the rest.
     parcel_cls = winner.astype(np.uint8)[parcel_ids]
+    # cfg override: the 1975-1983 offset prints stipple public-ownership
+    # areas (Arlington Cemetery, the airport) with dense black dots that
+    # read as "street-ness" here; those years need a looser gate or the
+    # big federal tracts drop out of the raw passthrough entirely.
     raw_keep = cls.copy()
-    raw_keep[street_frac > SOLID_MAX_STREET] = 0
+    raw_keep[street_frac > cfg.get("solid_max_street", SOLID_MAX_STREET)] = 0
     raw_keep[tiger_streets > 0] = 0
     keep_raw = parcel_cls == 0
     parcel_cls[keep_raw] = raw_keep[keep_raw]

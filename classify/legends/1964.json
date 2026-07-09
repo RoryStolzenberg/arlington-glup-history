@@ -1,0 +1,33 @@
+{
+  "comment": "Swatch centers row-probed from work/rgb/1964-front.tif (3500x4977 scan). Same 12-class legend as 1961 (Motel merged into General Business; Office Buildings is the red crosshatch, region-bound like 1961). Paper is cream (chroma ~6-10) so white_chroma stays at 9. com-office regions start as copies of 1961's county-grid boxes (Rosslyn + Crystal City) since regions are in county-grid px, shared geography across editions.",
+  "sample_radius": 12,
+  "blur": {"median": 5, "gauss": 0},
+  "black_l": 42,
+  "white_chroma": 12,
+  "classes": [
+    {"code": "res-low",        "name": "Low (single family, 0-8 u/ac)",     "x": 780,  "y": 3758},
+    {"code": "res-lowmed",     "name": "Low Medium (two family, 9-13)",     "x": 780,  "y": 3840},
+    {"code": "res-highmed",    "name": "High Medium (multi-family, 14-39)", "x": 780,  "y": 3917},
+    {"code": "public",         "name": "Public open space",                 "x": 780,  "y": 4092, "family": "open-space"},
+    {"code": "semi-public",    "name": "Semi-public open space",            "x": 780,  "y": 4161, "family": "open-space"},
+    {"code": "greenway",       "name": "Private greenway",                  "x": 780,  "y": 4231, "family": "open-space"},
+    {"code": "com-neighborhood","name": "Neighborhood Shopping",            "x": 3315, "y": 3817},
+    {"code": "com-general",    "name": "General Business (incl. Motel)",    "x": 3315, "y": 3877, "family": "com-red"},
+    {"code": "com-office",     "name": "Office Buildings",                  "x": 3315, "y": 3935, "family": "com-red"},
+    {"code": "industrial",     "name": "Industrial",                        "x": 3315, "y": 4055},
+    {"code": "gov-community",  "name": "Government and Community Facilities","x": 3315, "y": 4127},
+    {"code": "apt-office",     "name": "Apartments & Offices",              "x": 3315, "y": 4211}
+  ],
+  "regions": {
+    "com-office": [[3130, 2230, 3420, 2470], [4250, 3330, 4560, 3560]]
+  },
+  "textured": ["com-office"],
+  "map_samples": [
+    {"code": "semi-public", "x": 3700, "y": 2800},
+    {"code": "semi-public", "x": 1310, "y": 1830}
+  ],
+  "negatives": [
+    {"x": 2990, "y": 2321},
+    {"x": 758,  "y": 1610}
+  ]
+}

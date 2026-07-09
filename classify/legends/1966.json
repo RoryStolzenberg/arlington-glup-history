@@ -1,0 +1,29 @@
+{
+  "comment": "Swatch centers row-probed from work/rgb/1966-front.tif (3500x4977 scan, sibling of 1964 but a duller print). Same 12-class legend as 1961/1964. WARNING: this print's res-low and res-lowmed swatches are only ~8.6 Lab apart (both pale yellow) - expect map_samples to be needed to separate them. com-office regions copied from 1961 county-grid boxes.",
+  "sample_radius": 12,
+  "blur": {"median": 5, "gauss": 0},
+  "black_l": 42,
+  "white_chroma": 6,
+  "classes": [
+    {"code": "res-low",        "name": "Low (single family, 0-8 u/ac)",     "x": 835,  "y": 3767},
+    {"code": "res-lowmed",     "name": "Low Medium (two family, 9-13)",     "x": 835,  "y": 3852},
+    {"code": "res-highmed",    "name": "High Medium (multi-family, 14-39)", "x": 835,  "y": 3931},
+    {"code": "public",         "name": "Public open space",                 "x": 835,  "y": 4104, "family": "open-space"},
+    {"code": "semi-public",    "name": "Semi-public open space",            "x": 835,  "y": 4172, "family": "open-space"},
+    {"code": "greenway",       "name": "Private greenway",                  "x": 835,  "y": 4225, "family": "open-space"},
+    {"code": "com-neighborhood","name": "Neighborhood Shopping",            "x": 3365, "y": 3813},
+    {"code": "com-general",    "name": "General Business (incl. Motel)",    "x": 3365, "y": 3872, "family": "com-red"},
+    {"code": "com-office",     "name": "Office Buildings",                  "x": 3365, "y": 3972, "family": "com-red"},
+    {"code": "industrial",     "name": "Industrial",                        "x": 3365, "y": 4049},
+    {"code": "gov-community",  "name": "Government and Community Facilities","x": 3365, "y": 4129},
+    {"code": "apt-office",     "name": "Apartments & Offices",              "x": 3365, "y": 4207}
+  ],
+  "regions": {
+    "com-office": [[3130, 2230, 3420, 2470], [4250, 3330, 4560, 3560]]
+  },
+  "textured": ["com-office"],
+  "map_samples": [
+    {"code": "semi-public", "x": 3700, "y": 2800},
+    {"code": "semi-public", "x": 1310, "y": 1830}
+  ]
+}

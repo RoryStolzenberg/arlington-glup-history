@@ -200,9 +200,67 @@ viewer, but no Mapbox/Observable dependency).
 - Coordinate-picking workflow for new legend configs: render county-grid
   BGR (gdalwarp to 8ft bbox), save gridded PNG with 100px-labeled lines,
   eyeball sample points, probe median Lab before committing to config.
-- TODO: legend configs for other 19 editions; designation crosswalk
-  (friend's domain); viewer integration (indexed PNG lookup + click
-  history); acreage trends (report parcel-voted acres; ROW excluded).
+- TODO: designation crosswalk (friend's domain); viewer integration
+  (indexed PNG lookup + click history); acreage trends (report
+  parcel-voted acres; ROW excluded).
+
+### All 21 editions configured (2026-07-08, old-era batch)
+- Eras: 1961/1964/1966 = 12-class litho (same legend layout, split
+  bottom-left/bottom-right); 1975/1979 = 15-class (SET18 minus mixed-use;
+  first modern legend); 1983 = 15 used of 17 printed (see below);
+  1987+ = 18-class.
+- Swatch probing: row-uniformity probe (rowstd<6 + chroma>12 or
+  darker-than-paper) on the legend column; gray swatches (gov) need a
+  direct box median — they read as "paper" to the row filter. 2004
+  lesson holds: never hand-read y centers.
+- 1983 striped mixed-use: mu-highmed/mu-med print as BLACK STRIPES over
+  the base class color (medians land 2.7 / 9 Lab from res-highmed /
+  com-general) — chromatically inseparable, OMITTED from 1983 config.
+  1983 MU areas count under res-highmed/com-general; footnote any table.
+- 1975 legend footnote: oah-low carries an asterisk = "no property is
+  classified within this designation at present" — and the classifier
+  returns exactly 0 ac. Good end-to-end sanity check.
+- solid_max_street cfg key (classify.py): 1975-83 prints stipple
+  public-ownership land (cemetery, airport, Pentagon lots) with black
+  dots that read as street-ness; gate raised 0.20→0.55 for those three
+  years so the federal tracts survive raw passthrough (mostly as gov —
+  print-faithful: those sheets draw the cemetery Ft-Myer-gray + stipple,
+  unlike 1987+ where it's pale green → public).
+- 1979 corridor red prints DULL BRICK (L 40-58, far from the vivid
+  legend swatch): Clarendon/Wilson com-general was landing on
+  res-med/res-highmed. Fixed with com-general map sample at the bright
+  brick (L~58) + svc-commercial sample at measured corridor orange.
+  Residual: darkest bricks (L 40-48) still ambiguous vs res-highmed
+  maroon. 1979 svc-com legend orange is real-scarce (~73 ac on sheet).
+- DESATURATED-ZONE TRAP (cost 3 iterations): faded yellow wash, pale
+  gray (gov), stipple-green blends all live at L 70-88 / chroma 5-20.
+  ANY map sample or negative placed there steals neighbors wholesale
+  (1975 public 2155→245 from res-low anchors; 1966 open-space
+  2837→1083 from smear negatives; public↔gov swaps from a cemetery
+  anchor). Rule: never anchor a class in the desaturated zone unless
+  the competing classes' real print colors are probed and >10 Lab away.
+  Accept scattered-fleck residual instead (~50-300 ac/yr, like the
+  mid-era unassigned floor).
+- 1964: paper is cream chroma ~10 → white_chroma 12, else paper+street
+  corners classify gov (corner-blend negatives at L~89-90 handle the
+  rest). 1966 print is dull: res-low vs res-lowmed swatches 8.6 Lab
+  apart; semi-public≈greenway. Semi-public map anchors at 1961's sample
+  spots (cemetery 3700,2800; 1310,1830) restore a 1961-like split.
+- Open-space subclass split (public/semi/greenway) is PRINT-DEPENDENT
+  across 1961-66 (cemetery reads public on 1964, semi on 1961/66).
+  Family totals stable: 2,573 / 2,843 / 2,881 ac. Report the family.
+- Small isolated green parcels in the 60s outputs are often REAL
+  (neighborhood playgrounds are a mapped designation, 1-2 ac squares) —
+  don't nuke them with negatives; the fleck-finder must be judged
+  against the source (many "flecks" at Crystal City East were real
+  res-high towers in 1983).
+- 1979 Colonial Village purple (Coordinated Preservation & Development
+  District) has no legend class → stays unclassified (honest hole).
+- Final old-era acreage (parcel-voted + raw): see classify/out CSVs;
+  headline: res-low family ~5.0-5.7k all 21 years; 1975-83 public
+  2.1-2.6k / gov 1.5-2.0k consistent with 1987-96 (which themselves
+  swap public↔gov in 1996); com-general arc 404 (1961) → 108/180/85
+  (75/79/83) → 26 (1987) → 2 (1996) tracks Clarendon's decline.
 
 ## PUBLISHED (2026-07-06)
 - Live: https://rorystolzenberg.github.io/arlington-glup-history/

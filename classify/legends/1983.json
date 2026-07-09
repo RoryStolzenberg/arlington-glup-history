@@ -1,0 +1,31 @@
+{
+  "comment": "Swatch centers row-probed from work/rgb/1983-front.tif (3500x5449). The printed legend has 17 classes: the 15 from 1975/1979 plus two striped mixed-use entries (High Medium Mixed Use in the residential block, Medium Density Mixed Use in its own section). Those stripes are just black bands over the base class color - mu-highmed medians within 2.7 Lab of res-highmed, mu-med within 9 of com-general - so they are chromatically inseparable from their base classes and are OMITTED here. 1983 mixed-use areas (Rosslyn/Courthouse era districts) will therefore be counted under res-highmed / com-general; footnote this in any acreage table. res-high is dark purple-maroon (L~21, chroma 33), safely above the black-cut chroma escape.",
+  "sample_radius": 14,
+  "blur": {"median": 5, "gauss": 0},
+  "black_l": 42,
+  "white_chroma": 6,
+  "ink_halo": 2,
+  "classes": [
+    {"code": "res-low-1-10",  "name": "Residential Low (1-10 u/ac)",       "x": 140, "y": 4192},
+    {"code": "res-low-11-15", "name": "Residential Low (11-15 u/ac)",      "x": 140, "y": 4243},
+    {"code": "res-lowmed",    "name": "Residential Low Medium (16-30)",    "x": 140, "y": 4293},
+    {"code": "res-med",       "name": "Residential Medium (31-72)",        "x": 140, "y": 4339},
+    {"code": "res-highmed",   "name": "Residential High Medium (3.24 FAR)","x": 140, "y": 4458},
+    {"code": "res-high",      "name": "Residential High (91-135)",         "x": 140, "y": 4513},
+    {"code": "public",        "name": "Public",                            "x": 140, "y": 4643},
+    {"code": "semi-public",   "name": "Semi-Public",                       "x": 140, "y": 4798},
+    {"code": "gov-community", "name": "Government and Community Facilities","x": 140, "y": 4946},
+    {"code": "svc-commercial","name": "Service Commercial",                "x": 902, "y": 4190},
+    {"code": "com-general",   "name": "General Commercial",                "x": 902, "y": 4303},
+    {"code": "svc-industry",  "name": "Service Industry",                  "x": 902, "y": 4421},
+    {"code": "oah-low",       "name": "Office-Apartment-Hotel Low",        "x": 902, "y": 4603},
+    {"code": "oah-med",       "name": "Office-Apartment-Hotel Medium",     "x": 902, "y": 4652},
+    {"code": "oah-high",      "name": "Office-Apartment-Hotel High",       "x": 902, "y": 4702}
+  ],
+  "solid_max_street": 0.55,
+  "map_samples": [
+    {"code": "res-low-1-10",  "x": 4310, "y": 4152},
+    {"code": "res-low-1-10",  "x": 2565, "y": 1642},
+    {"code": "res-low-1-10",  "x": 4259, "y": 4297}
+  ]
+}
