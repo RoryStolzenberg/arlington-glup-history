@@ -13,4 +13,6 @@ editions (1961–2024) + a static MapLibre web viewer to browse/compare them.
 - `work/` — rgb/ (plain renders), georef/ (EPSG:2283 GeoTIFFs), qa/ (blends)
 - `web/` — static viewer (index.html/app.js/style.css, tiles/ gitignored)
 - `experiments/` — one-off matching experiments
+- `_junk/` — gitignored session diagnostics (probe/QA scripts + rendered
+  images rescued from the ephemeral scratchpad; see its README)
 - Python: `.venv/bin/python` (opencv); GDAL via CLI tools
