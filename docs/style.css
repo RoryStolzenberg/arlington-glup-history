@@ -80,8 +80,74 @@ body {
 .tl-dot.active span, .tl-dot:hover span { display: block; font-weight: 600; }
 .tl-dot.active span { color: #b5432c; }
 
+#legend {
+  position: fixed; bottom: 82px; left: 10px; z-index: 30;
+  background: rgba(255, 255, 255, 0.94); border-radius: 6px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
+  max-width: 250px; font-size: 12px;
+}
+#legend:has(.lg-block:nth-child(2)) { max-width: 400px; }
+#legend-head {
+  display: block; width: 100%; text-align: left; cursor: pointer;
+  border: 0; background: none; font: inherit; font-weight: 600;
+  padding: 7px 10px; color: #333;
+}
+#legend-arrow { float: right; color: #888; }
+#legend-body {
+  padding: 0 10px 8px; max-height: 42vh; overflow-y: auto;
+  display: flex; gap: 14px;
+}
+#legend.collapsed #legend-body { display: none; }
+.lg-block { min-width: 0; }
+.lg-year { font-weight: 600; color: #b5432c; margin: 2px 0 4px; }
+.lg-block:only-child .lg-year { display: none; }
+.lg-row {
+  display: flex; align-items: center; gap: 6px;
+  padding: 1.5px 0; color: #333; line-height: 1.25;
+}
+.chip {
+  width: 13px; height: 13px; border-radius: 3px; flex: none;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+}
+.chip-none {
+  background:
+    repeating-linear-gradient(45deg, #eee 0 3px, #ccc 3px 6px);
+}
+
+#history {
+  position: fixed; top: 70px; right: 10px; bottom: 82px; z-index: 31;
+  width: min(320px, 86vw);
+  background: rgba(255, 255, 255, 0.97); border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  display: flex; flex-direction: column;
+}
+#history-head {
+  display: flex; justify-content: space-between; align-items: start;
+  padding: 10px 12px 6px; border-bottom: 1px solid #e3e3e3;
+}
+#history-head strong { font-size: 14px; }
+#history-sub { font-size: 11px; color: #777; }
+#history-close {
+  border: 0; background: none; font-size: 22px; line-height: 1;
+  color: #888; cursor: pointer; padding: 0 2px;
+}
+#history-close:hover { color: #222; }
+#history-body { overflow-y: auto; padding: 6px 8px 10px; }
+.h-row {
+  display: flex; align-items: center; gap: 8px;
+  padding: 3px 6px; border-radius: 5px; cursor: pointer;
+  font-size: 12.5px; color: #333;
+}
+.h-row:hover { background: #eef3fb; }
+.h-row.current { background: #e4edfb; font-weight: 600; }
+.h-year { font-variant-numeric: tabular-nums; color: #666; flex: none; }
+.h-row.current .h-year { color: #2b5fa5; }
+.h-name { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
 @media (max-width: 700px) {
   #titlebar { max-width: 240px; }
   #titlebar p { display: none; }
   #controls { top: auto; bottom: 80px; right: 10px; }
+  #legend { bottom: 130px; max-width: 200px; }
+  #history { top: auto; bottom: 130px; max-height: 45vh; }
 }

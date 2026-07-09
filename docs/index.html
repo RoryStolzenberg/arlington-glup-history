@@ -37,8 +37,25 @@
 
 <nav id="timeline"></nav>
 
+<div id="legend">
+  <button id="legend-head">Legend <span id="legend-arrow">▾</span></button>
+  <div id="legend-body"></div>
+</div>
+
+<aside id="history" class="hidden">
+  <div id="history-head">
+    <div>
+      <strong id="history-title">Parcel</strong>
+      <div id="history-sub">designation history</div>
+    </div>
+    <button id="history-close" title="Close">×</button>
+  </div>
+  <div id="history-body"></div>
+</aside>
+
 <script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
 <script src="https://unpkg.com/pmtiles@3.2.1/dist/pmtiles.js"></script>
+<script src="https://unpkg.com/proj4@2.11.0/dist/proj4.js"></script>
 <script src="app.js"></script>
 </body>
 </html>
