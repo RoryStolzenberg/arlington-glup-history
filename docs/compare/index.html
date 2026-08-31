@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>GLUP editions: original / recolored / parcel-classified</title>
+<style>
+  :root {
+    --bg: #15171a;
+    --panel: #202329;
+    --edge: #33373f;
+    --text: #e7e9ec;
+    --dim: #9aa1ad;
+  }
+  * { box-sizing: border-box; }
+  html, body { height: 100%; margin: 0; }
+  body {
+    background: var(--bg); color: var(--text);
+    font: 13px/1.4 system-ui, -apple-system, "Segoe UI", sans-serif;
+    display: flex; flex-direction: column; overflow: hidden;
+  }
+
+  header { padding: 8px 12px 6px; border-bottom: 1px solid var(--edge); }
+  .row { display: flex; align-items: center; gap: 14px; }
+  .row + .row { margin-top: 6px; }
+
+  #year { font: 700 30px/1 system-ui, sans-serif; min-width: 76px; letter-spacing: -0.5px; }
+  #slider { flex: 1; max-width: 560px; accent-color: #6aa8ff; }
+
+  .toggles { display: flex; gap: 12px; color: var(--dim); }
+  .toggles label { cursor: pointer; user-select: none; }
+  .toggles input { vertical-align: -1px; margin-right: 3px; }
+
+  .hint { color: var(--dim); font-size: 12px; margin-left: auto; text-align: right; }
+  kbd {
+    background: #2c3038; border: 1px solid var(--edge); border-radius: 3px;
+    padding: 0 4px; font: 11px/1.5 ui-monospace, monospace;
+  }
+
+  .years { display: flex; flex-wrap: wrap; gap: 4px; }
+  .years button {
+    background: transparent; color: var(--dim); border: 1px solid var(--edge);
+    border-radius: 4px; padding: 2px 6px; font: 12px/1.3 ui-monospace, monospace;
+    cursor: pointer;
+  }
+  .years button:hover { color: var(--text); border-color: #545b68; }
+  .years button.on { background: #6aa8ff; border-color: #6aa8ff; color: #10131a; font-weight: 700; }
+
+  #stage { flex: 1; display: flex; gap: 6px; padding: 6px; min-height: 0; }
+  .panel {
+    flex: 1; min-width: 0; position: relative; overflow: hidden;
+    background: var(--panel); border: 1px solid var(--edge); border-radius: 4px;
+    cursor: grab;
+  }
+  .panel.hidden { display: none; }
+  .panel.dragging { cursor: grabbing; }
+  .panel img {
+    position: absolute; top: 0; left: 0;
+    transform-origin: 0 0; image-rendering: auto;
+    user-select: none; -webkit-user-drag: none;
+  }
+  .cap {
+    position: absolute; left: 0; top: 0; z-index: 2;
+    background: rgba(16,19,26,0.78); color: var(--text);
+    padding: 3px 8px; border-radius: 0 0 4px 0;
+    font: 12px/1.3 ui-monospace, monospace; pointer-events: none;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="row">
+    <div id="year">1961</div>
+    <input id="slider" type="range" min="0" max="20" value="0" step="1">
+    <div class="toggles">
+      <label><input type="checkbox" data-key="orig" checked> original</label>
+      <label><input type="checkbox" data-key="recolor" checked> recolored</label>
+      <label><input type="checkbox" data-key="parcel" checked> parcel-classified</label>
+    </div>
+    <div class="hint">
+      <kbd>&larr;</kbd><kbd>&rarr;</kbd> year &nbsp; wheel = zoom &nbsp; drag = pan &nbsp;
+      dbl-click = reset<br>
+      <kbd>1</kbd><kbd>2</kbd><kbd>3</kbd> solo panel &nbsp; <kbd>a</kbd> all &nbsp;
+      <kbd>f</kbd> flicker recolored/parcel
+    </div>
+  </div>
+  <div class="row years" id="years"></div>
+</header>
+
+<div id="stage">
+  <div class="panel" data-key="orig"><div class="cap">original</div><img alt="original"></div>
+  <div class="panel" data-key="recolor"><div class="cap">recolored</div><img alt="recolored"></div>
+  <div class="panel" data-key="parcel"><div class="cap">parcel-classified</div><img alt="parcel-classified"></div>
+</div>
+
+<script>
+const YEARS = ["1961","1964","1966","1975","1979","1983","1987","1990","1996",
+               "2004","2013","2014","2016","2017","2018","2019","2020","2021",
+               "2022","2023","2024"];
+const KEYS = ["orig", "recolor", "parcel"];
+const IMG_W = 1400, IMG_H = 1352;   // every frame is this exact size
+
+const panels = {}, imgs = {}, boxes = {};
+document.querySelectorAll('.panel').forEach(p => {
+  panels[p.dataset.key] = p;
+  imgs[p.dataset.key] = p.querySelector('img');
+});
+const stage = document.getElementById('stage');
+const yearEl = document.getElementById('year');
+const slider = document.getElementById('slider');
+const yearsEl = document.getElementById('years');
+const checks = {};
+document.querySelectorAll('.toggles input').forEach(c => checks[c.dataset.key] = c);
+
+let idx = 0;
+let visible = new Set(KEYS);
+let view = null;          // {s, tx, ty} in panel-viewport pixels, shared by all
+const preloaded = new Map();
+
+// ---- year list ----
+YEARS.forEach((y, i) => {
+  const b = document.createElement('button');
+  b.textContent = y;
+  b.onclick = () => setYear(i);
+  yearsEl.appendChild(b);
+  boxes[y] = b;
+});
+
+function src(key, i) { return `${key}_${YEARS[i]}.jpg`; }
+
+function preload(i) {
+  for (const j of [i, i - 1, i + 1, i - 2, i + 2]) {
+    if (j < 0 || j >= YEARS.length) continue;
+    for (const k of KEYS) {
+      const u = src(k, j);
+      if (preloaded.has(u)) continue;
+      const im = new Image();
+      im.src = u;
+      preloaded.set(u, im);
+    }
+  }
+}
+
+function setYear(i) {
+  idx = Math.max(0, Math.min(YEARS.length - 1, i));
+  const y = YEARS[idx];
+  yearEl.textContent = y;
+  slider.value = idx;
+  for (const k of KEYS) imgs[k].src = src(k, idx);
+  YEARS.forEach(yy => boxes[yy].classList.toggle('on', yy === y));
+  preload(idx);
+}
+
+// ---- panel visibility ----
+function applyVisibility() {
+  for (const k of KEYS) {
+    panels[k].classList.toggle('hidden', !visible.has(k));
+    checks[k].checked = visible.has(k);
+  }
+  fit();
+}
+function solo(k) { visible = new Set([k]); applyVisibility(); }
+function showAll() { visible = new Set(KEYS); applyVisibility(); }
+
+for (const k of KEYS) {
+  checks[k].addEventListener('change', () => {
+    if (checks[k].checked) visible.add(k); else visible.delete(k);
+    if (visible.size === 0) visible.add(k);   // never leave an empty stage
+    applyVisibility();
+  });
+}
+
+// ---- shared pan/zoom ----
+// One transform serves all panels: the frames are pixel-aligned and every
+// visible panel is the same size, so panel-local coordinates are interchangeable.
+function panelSize() {
+  const p = KEYS.map(k => panels[k]).find(p => !p.classList.contains('hidden'));
+  return [p.clientWidth, p.clientHeight];
+}
+
+function fit() {
+  const [pw, ph] = panelSize();
+  const s = Math.min(pw / IMG_W, ph / IMG_H);
+  view = { s, tx: (pw - IMG_W * s) / 2, ty: (ph - IMG_H * s) / 2 };
+  render();
+}
+
+function render() {
+  const t = `translate(${view.tx.toFixed(2)}px, ${view.ty.toFixed(2)}px) scale(${view.s})`;
+  for (const k of KEYS) imgs[k].style.transform = t;
+}
+
+stage.addEventListener('wheel', e => {
+  e.preventDefault();
+  const p = e.currentTarget.querySelector('.panel:not(.hidden)');
+  const r = (e.target.closest('.panel') || p).getBoundingClientRect();
+  const cx = e.clientX - r.left, cy = e.clientY - r.top;
+  const [pw, ph] = panelSize();
+  const minS = Math.min(pw / IMG_W, ph / IMG_H) * 0.4;
+  const f = Math.exp(-e.deltaY * (e.deltaMode === 1 ? 0.05 : 0.0018));
+  const s = Math.max(minS, Math.min(30, view.s * f));
+  view.tx = cx - (cx - view.tx) * (s / view.s);
+  view.ty = cy - (cy - view.ty) * (s / view.s);
+  view.s = s;
+  render();
+}, { passive: false });
+
+let drag = null;
+stage.addEventListener('pointerdown', e => {
+  const p = e.target.closest('.panel');
+  if (!p) return;
+  drag = { x: e.clientX, y: e.clientY, p };
+  p.classList.add('dragging');
+  p.setPointerCapture(e.pointerId);
+});
+stage.addEventListener('pointermove', e => {
+  if (!drag) return;
+  view.tx += e.clientX - drag.x;
+  view.ty += e.clientY - drag.y;
+  drag.x = e.clientX; drag.y = e.clientY;
+  render();
+});
+function endDrag() {
+  if (drag) drag.p.classList.remove('dragging');
+  drag = null;
+}
+stage.addEventListener('pointerup', endDrag);
+stage.addEventListener('pointercancel', endDrag);
+stage.addEventListener('dblclick', fit);
+
+// ---- keyboard ----
+window.addEventListener('keydown', e => {
+  if (e.target.tagName === 'INPUT' && e.target.type === 'range' &&
+      (e.key === 'ArrowLeft' || e.key === 'ArrowRight')) return;
+  switch (e.key) {
+    case 'ArrowLeft':  setYear(idx - 1); break;
+    case 'ArrowRight': setYear(idx + 1); break;
+    case '1': solo('orig'); break;
+    case '2': solo('recolor'); break;
+    case '3': solo('parcel'); break;
+    case 'a': showAll(); break;
+    case 'f':
+      // flicker: hold one panel and swap the two standardized renders in place
+      if (visible.size === 1 && visible.has('recolor')) solo('parcel');
+      else solo('recolor');
+      break;
+    default: return;
+  }
+  e.preventDefault();
+});
+
+slider.addEventListener('input', () => setYear(+slider.value));
+window.addEventListener('resize', fit);
+
+setYear(0);
+applyVisibility();
+</script>
+</body>
+</html>
