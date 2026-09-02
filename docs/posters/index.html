@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>GLUP Posters — printable set</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+         Roboto, Helvetica, Arial, sans-serif; background: #f4f3f0; color: #222; }
+  header { padding: 28px 32px 10px; }
+  h1 { margin: 0 0 6px; font-size: 26px; }
+  header p { margin: 4px 0; color: #555; font-size: 14px; max-width: 760px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+          gap: 18px; padding: 20px 32px 40px; }
+  .card { background: #fff; border-radius: 8px; overflow: hidden;
+          box-shadow: 0 1px 4px rgba(0,0,0,.18); }
+  .card img { width: 100%; display: block; }
+  .card .row { display: flex; justify-content: space-between; align-items: baseline;
+               padding: 8px 12px; }
+  .card .yr { font-weight: 700; font-size: 17px; }
+  .card a { color: #2b5fa5; text-decoration: none; font-size: 13px; }
+  .card a:hover { text-decoration: underline; }
+  footer { padding: 0 32px 40px; color: #777; font-size: 12px; max-width: 760px; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Arlington GLUP — printable poster set, 1961–2024</h1>
+  <p>Every edition of the General Land Use Plan, reprojected onto today's parcel
+     fabric and rendered in one standardized color scheme (Public and Semi-Public
+     combined; pre-1975 classes mapped to the nearest modern density band).
+     Each file is 6769&times;5037 px — about 34&times;25&nbsp;in at 200&nbsp;dpi
+     or 28&times;21&nbsp;in at 240&nbsp;dpi. Print at native resolution
+     (no resampling) to keep parcel edges crisp.</p>
+  <p>Click a year to open the full-resolution PNG, then save/print from there.</p>
+</header>
+<div class="grid" id="grid"></div>
+<footer>
+  Source: Arlington County GLUP editions, georeferenced and color-classified.
+  Interactive versions: <a href="../">map viewer</a> ·
+  <a href="../compare/">rendering comparison</a>.
+</footer>
+<script>
+const YEARS = ["1961","1964","1966","1975","1979","1983","1987","1990","1996",
+               "2004","2013","2014","2016","2017","2018","2019","2020","2021",
+               "2022","2023","2024"];
+document.getElementById('grid').innerHTML = YEARS.map(y =>
+  `<div class="card">
+     <a href="glup_${y}.png"><img src="thumb_${y}.jpg" alt="${y} GLUP poster" loading="lazy"></a>
+     <div class="row"><span class="yr">${y}</span>
+       <a href="glup_${y}.png" download>full-res PNG</a></div>
+   </div>`).join('');
+</script>
+</body>
+</html>
