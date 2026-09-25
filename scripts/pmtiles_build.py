@@ -18,7 +18,7 @@ import tempfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-TILES = ROOT / "docs" / "tiles"
+TILES = Path(os.environ.get("GLUP_TILES", ROOT / "docs" / "tiles"))
 MBUTIL = ROOT / ".venv" / "bin" / "mb-util"
 PMTILES = os.environ.get("PMTILES", "pmtiles")
 

@@ -8,13 +8,16 @@ viewer.
 """
 import json
 import math
+import os
 import subprocess
 import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-GEOREF = ROOT / "work" / "georef"
-TILES = ROOT / "docs" / "tiles"
+# Override both to tile a different raster set (e.g. the standardized
+# renders: GLUP_SRC=work/standardized GLUP_TILES=docs/standardized/tiles).
+GEOREF = Path(os.environ.get("GLUP_SRC", ROOT / "work" / "georef"))
+TILES = Path(os.environ.get("GLUP_TILES", ROOT / "docs" / "tiles"))
 
 MIN_ZOOM = 10
 MAX_ZOOM_CAP = 16
@@ -60,7 +63,7 @@ def main():
         if not src.exists():
             print(f"MISSING {src}", file=sys.stderr)
             continue
-        maxz = native_max_zoom(src)
+        maxz = min(native_max_zoom(src), int(os.environ.get("GLUP_MAXZOOM", MAX_ZOOM_CAP)))
         out = TILES / year
         if only and year not in only:
             pass
@@ -70,7 +73,8 @@ def main():
             print(f"=== {year}: z{MIN_ZOOM}-{maxz}", flush=True)
             subprocess.run(
                 ["gdal2tiles.py", "--xyz", "-z", f"{MIN_ZOOM}-{maxz}",
-                 "-r", "bilinear", "-w", "none", "--processes", "8",
+                 "-r", os.environ.get("GLUP_RESAMPLE", "bilinear"),
+                 "-w", "none", "--processes", os.environ.get("GLUP_PROCS", "8"),
                  "-q", str(src), str(out)], check=True)
         index[year] = {
             "path": f"tiles/{year}",

@@ -12,12 +12,17 @@ const ATTRIB = 'Maps © <a href="https://www.arlingtonva.us/Government/Projects/
 // requests — no tile server. Override TILES_BASE (absolute URL, trailing
 // slash) to host the archives elsewhere, e.g. an R2 bucket.
 const TILES_BASE = window.TILES_BASE || "";
+// Optional per-site config (docs/standardized/config.js): where the shared
+// data/ files live relative to the page, and a canonical class list that
+// replaces the per-year sheet legends.
+const CFG = window.VIEWER_CONFIG || {};
+const DATA_BASE = CFG.dataBase || "";
 
 const pmProtocol = new pmtiles.Protocol();
 maplibregl.addProtocol("pmtiles", pmProtocol.tile);
 
 const SOURCE_URLS = {}; // year -> original PDF/JPG, filled from manifest below
-fetch("sources.json").then(r => r.ok ? r.json() : {}).then(d => Object.assign(SOURCE_URLS, d));
+fetch(DATA_BASE + "sources.json").then(r => r.ok ? r.json() : {}).then(d => Object.assign(SOURCE_URLS, d));
 
 let editions = {};   // index.json: year -> {path, minzoom, maxzoom, bounds}
 let years = [];
@@ -234,8 +239,9 @@ let LEGENDS = null;
 
 async function initLegend() {
   try {
-    LEGENDS = await (await fetch("data/legends.json")).json();
+    LEGENDS = await (await fetch(DATA_BASE + "data/legends.json")).json();
   } catch { return; }
+  if (CFG.legendTitle) $("legend-head").firstChild.textContent = CFG.legendTitle + " ";
   $("legend-head").onclick = () => {
     $("legend").classList.toggle("collapsed");
     $("legend-arrow").textContent =
@@ -254,8 +260,29 @@ function legendBlock(year) {
 
 function renderLegend() {
   if (!LEGENDS) return;
+  if (CFG.canon) {
+    const rows = CFG.canon.map(c =>
+      `<div class="lg-row"><span class="chip" style="background:${c.color}"></span>${c.name}</div>`
+    ).join("");
+    $("legend-body").innerHTML = `<div class="lg-block">${rows}</div>`;
+    return;
+  }
   $("legend-body").innerHTML =
     comparing ? legendBlock(yearA) + legendBlock(yearB) : legendBlock(yearA);
+}
+
+/* Class to display for a (year, per-year legend index): the sheet's own
+ * entry, or in canonical mode the standardized slot it maps to (1960s
+ * residential classes are placed by density band, not name). */
+function classDisplay(year, idx) {
+  const own = (LEGENDS[year] || [])[idx - 1];
+  if (!own || !CFG.canon) return own;
+  let code = own.code;
+  if (+year < 1975 && (code === "res-lowmed" || code === "res-highmed")) {
+    code = CFG.alias[code + "@60s"] || code;
+  }
+  code = CFG.alias[code] || code;
+  return CFG.canon.find(c => c.code === code) || own;
 }
 
 /* ---- parcel click -> designation history ----
@@ -276,8 +303,8 @@ function ensureParcelData() {
   if (histLoading) return histLoading;
   histLoading = (async () => {
     const [doc, blob] = await Promise.all([
-      fetch("data/history.json").then(r => r.json()),
-      fetch("data/parcel_ids.png").then(r => r.blob()),
+      fetch(DATA_BASE + "data/history.json").then(r => r.json()),
+      fetch(DATA_BASE + "data/parcel_ids.png").then(r => r.blob()),
     ]);
     const bmp = await createImageBitmap(blob);
     const cv = document.createElement("canvas");
@@ -383,7 +410,7 @@ function renderHistory() {
   const hh = HIST.hist[selParcel];
   const rows = HIST.years.map((year, yi) => {
     const idx = parseInt(hh[yi], 36);
-    const cls = idx ? (LEGENDS[year] || [])[idx - 1] : null;
+    const cls = idx ? classDisplay(year, idx) : null;
     const chip = cls
       ? `<span class="chip" style="background:${cls.color}"></span>`
       : `<span class="chip chip-none"></span>`;

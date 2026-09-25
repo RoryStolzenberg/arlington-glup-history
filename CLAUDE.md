@@ -32,11 +32,14 @@ capacity analysis and viewer polish.
 - `sources/` — original PDFs/JPGs (gitignored) + manifest.tsv
 - `scripts/` — pipeline: download.sh → extract.py → georef.py/corr_match.py
   → verify.py → tiles.py → pmtiles_build.py; refs: parcels.py, make_ref.sh;
-  classification: classify.py; viewer data: webdata.py
+  classification: classify.py; viewer data: webdata.py; standardized
+  tiles: standardize.py (+ GLUP_* env overrides on tiles/pmtiles scripts)
 - `classify/` — legends/{year}.json (hand-tuned configs) + analysis CSVs
 - `work/` — gitignored, regenerable: rgb/, georef/, qa/, ref/, classify/
 - `docs/` — the published site (index.html/app.js/style.css, data/,
-  tiles/*.pmtiles committed; XYZ dirs gitignored)
+  tiles/*.pmtiles committed; XYZ dirs gitignored); `docs/standardized/`
+  = same viewer in one standardized palette (own tiles + config.js);
+  `docs/compare/`, `docs/posters/` = static rendering comparison / prints
 - `notes/` — curated docs · `memory/` — session logs · `experiments/` —
   one-offs · `_junk/` — gitignored diagnostic scripts + QA imagery (README
   inside)

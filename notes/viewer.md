@@ -28,6 +28,24 @@ proj4 2.11.0. Base map: OpenFreeMap positron.
   panel with the 21-edition timeline (rows switch the map year) + a
   bbox-masked image-source highlight on the map. Esc / empty click clears.
 
+## Standardized-colors twin (`docs/standardized/`)
+
+Same `app.js`/`style.css`, second entry point. `config.js` sets
+`window.VIEWER_CONFIG` = {dataBase: "../" (shared data/ + sources.json),
+canon: the 17-class standardized palette, alias: per-year code → canonical
+slot}. In canonical mode the legend panel shows the fixed palette once and
+the parcel-history rows map each year's class onto its canonical slot.
+Tiles: `scripts/standardize.py` paints work/classify parcel rasters
+(parcel-voted + whole-parcel raw fill, Public/Semi-Public merged) into
+work/standardized/{year}-front.tif (RGBA, ROW/outside transparent), then
+`GLUP_SRC=work/standardized GLUP_TILES=docs/standardized/tiles
+GLUP_RESAMPLE=near GLUP_MAXZOOM=15 tiles.py` → pngquant the XYZ dirs →
+`GLUP_TILES=... PMTILES=~/go/bin/go-pmtiles pmtiles_build.py`. Nearest
+resampling + z≤15 keeps flat-color tiles ~3 MB/year (bilinear + z16 was
+19 MB). Palette source of truth: scripts/standardize.py, mirrored in
+config.js and _junk/postermap.py — keep identical. Cross-links live in
+both index.html headers.
+
 ## Data files (`docs/data/`, from scripts/webdata.py)
 
 - `history.json`: `{years, meta{x0,y1,tr,w,h,crs}, rpc[], hist[], bbox[]}`
